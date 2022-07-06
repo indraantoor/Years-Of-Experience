@@ -1,14 +1,12 @@
 import React from "react";
 import { GlobalStyle } from "./App.style";
-import { Navbar } from "./components/Navbar";
-import { Footer } from "./components/Footer";
+import { Home } from "./pages/Home";
 
 const App = () => {
   return (
     <React.Fragment>
       <GlobalStyle />
-      <Navbar />
-      <Footer />
+      <Home />
     </React.Fragment>
   );
 };

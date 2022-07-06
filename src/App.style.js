@@ -12,6 +12,11 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    height: 100vh;
+    width: 100vw;
+  }
+
+  body {
     background-color: var(--main-bg);
     color: var(--primary-black);
   }

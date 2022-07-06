@@ -12,7 +12,7 @@ export const FooterContainer = styled.footer`
 
   ul {
     list-style-type: none;
-    padding: 0;
+    padding: 0.7rem 0 0 0;
     margin: 2rem 0;
     display: flex;
     flex-flow: row wrap;
