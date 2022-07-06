@@ -6,7 +6,9 @@ export const Navbar = () => {
       <ul>
         <li>
           <h1>
-            <a href="https://localhost:3000">Years Of Experience</a>
+            <a href="https://localhost:3000" id="logo-title">
+              Years Of Experience
+            </a>
           </h1>
         </li>
         <li>
@@ -17,6 +19,15 @@ export const Navbar = () => {
         </li>
         <li>
           <a href="https://localhost:3000">Contact</a>
+        </li>
+        <li>
+          <a href="https://localhost:3000">Profile</a>
+        </li>
+        <li>
+          <button>Sign In</button>
+        </li>
+        <li>
+          <button class="outline-button">Register</button>
         </li>
       </ul>
     </NavbarContainer>
