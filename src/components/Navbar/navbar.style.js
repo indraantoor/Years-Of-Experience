@@ -4,7 +4,6 @@ export const NavbarContainer = styled.nav`
   background-color: var(--primary);
   padding: 1rem;
   font-size: 85%;
-  //   box-shadow: 0 4px 12px 0 rgb(0 0 0 / 3%);
 
   h1 {
     padding: 0;
