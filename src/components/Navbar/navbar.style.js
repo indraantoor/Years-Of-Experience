@@ -34,7 +34,7 @@ export const NavbarContainer = styled.nav`
   a:hover,
   button.outline-button:hover,
   button:hover {
-    color: #8da9c4;
+    color: var(--secondary);
   }
 
   li:first-child {
@@ -53,14 +53,14 @@ export const NavbarContainer = styled.nav`
   }
 
   button.outline-button {
-    border: 1px solid var(--primary-white);
     padding: 8px 12px 8px 12px;
     border-radius: 4px;
+    background-color: var(--secondary);
+    color: var(--primary-black);
   }
 
   button.outline-button:hover {
-    border: 1px solid #8da9c4;
-    color: white;
+    color: var(--primary-black);
   }
 
   @media screen and (min-width: 850px) {

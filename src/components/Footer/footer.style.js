@@ -29,7 +29,7 @@ export const FooterContainer = styled.footer`
   }
 
   a:hover {
-    color: #8da9c4;
+    color: var(--secondary);
   }
 
   @media screen and (min-width: 850px) {
