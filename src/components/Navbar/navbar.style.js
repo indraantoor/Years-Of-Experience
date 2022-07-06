@@ -4,6 +4,7 @@ export const NavbarContainer = styled.nav`
   background-color: var(--primary);
   padding: 1rem;
   font-size: 85%;
+  //   box-shadow: 0 4px 12px 0 rgb(0 0 0 / 3%);
 
   h1 {
     padding: 0;
@@ -61,5 +62,19 @@ export const NavbarContainer = styled.nav`
   button.outline-button:hover {
     border: 1px solid #8da9c4;
     color: white;
+  }
+
+  @media screen and (min-width: 850px) {
+    margin: 0 auto;
+
+    ul {
+      max-width: 1200px;
+    }
+
+    li:first-child {
+      flex-basis: auto;
+      text-align: left;
+      margin-right: auto;
+    }
   }
 `;

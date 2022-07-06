@@ -7,7 +7,6 @@ const App = () => {
     <React.Fragment>
       <GlobalStyle />
       <Navbar />
-      Years Of Experience
     </React.Fragment>
   );
 };
