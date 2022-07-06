@@ -1,5 +1,13 @@
+import React from "react";
+import { GlobalStyle } from "./App.style";
+
 const App = () => {
-  return <div className="App">Years Of Experience</div>;
+  return (
+    <React.Fragment>
+      <GlobalStyle />
+      Years Of Experience
+    </React.Fragment>
+  );
 };
 
 export default App;
