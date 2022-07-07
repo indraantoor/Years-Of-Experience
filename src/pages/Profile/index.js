@@ -1,4 +1,5 @@
 import React from "react";
+import { WorkExperience } from "../../components/WorkExperience";
 import {
   BasicDetailsContainer,
   ProfilePictureContainer,
@@ -7,7 +8,7 @@ import {
 export const Profile = () => {
   return (
     <React.Fragment>
-      <h2>Profile</h2>
+      {/* <h2>Profile</h2> */}
 
       <BasicDetailsContainer>
         <ProfilePictureContainer>
@@ -26,18 +27,24 @@ export const Profile = () => {
         </div>
       </BasicDetailsContainer>
 
-      <div>
-        <h3>Work Experiences</h3>
-        <div>Job title: Intern</div>
-        <div>Start Date: June 2014 End Date: March 2017</div>
-        <div>Xyz Company</div>
-        <div>
-          <div>Company Logo: logo</div>
-          Job Description: Build a simple editable profile page that represents
-          a candidate's basic information and work experience. Minimally, the
-          following information is required to be editable and presented.
-        </div>
-      </div>
+      <h3 style={{ marginLeft: "2%" }}>Work Experiences</h3>
+      <WorkExperience
+        title="SDE 1"
+        startDate="June 2014"
+        isCurrentlyWorking="true"
+        company="Amazon"
+        companyLogoUrl="bai ji"
+        description="helllooo"
+      />
+
+      <WorkExperience
+        title="Fullstack Intern"
+        startDate="June 2014"
+        endDate="March 2017"
+        company="Microsoft"
+        companyLogoUrl="bai ji"
+        description="helllooo"
+      />
     </React.Fragment>
   );
 };
