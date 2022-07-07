@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   margin: 2%;
-  width: 40%;
+  width: 32rem;
   background-color: var(--primary);
   color: var(--primary-white);
   padding: 1.3rem;
