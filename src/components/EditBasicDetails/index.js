@@ -4,7 +4,6 @@ import { FormContainer } from "./editBasicDetails.style";
 export const EditBasicDetails = () => {
   return (
     <React.Fragment>
-      <h3>Basic Details</h3>
       <FormContainer>
         <label htmlFor="name">
           Name:
@@ -18,7 +17,7 @@ export const EditBasicDetails = () => {
           Age:
           <input type="number" id="age" min="0" max="100" placeholder="Age" />
         </label>
-        <button>Update</button>
+        <button type="submit">Update</button>
       </FormContainer>
     </React.Fragment>
   );

@@ -6,6 +6,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   margin: 2%;
 
   button {
@@ -26,5 +27,11 @@ export const Container = styled.div`
   input {
     display: block;
     margin-top: 7px;
+  }
+
+  .image-container {
+    background-color: red;
+    height: 100px;
+    width: 100px;
   }
 `;
