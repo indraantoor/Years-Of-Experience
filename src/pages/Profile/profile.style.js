@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const BasicDetailsContainer = styled.div`
   background-color: var(--primary);
-  width: 30rem;
+  width: 32rem;
   margin: 2%;
   max-width: 750px;
   display: flex;
