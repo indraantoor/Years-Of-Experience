@@ -4,6 +4,7 @@ import { Home } from "./pages/Home";
 import { MainPageLayout } from "./pages/shared/MainPageLayout";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Profile } from "./pages/Profile";
+import { PageNotFound } from "./pages/shared/PageNotFound";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Routes>
             <Route path="/profile/:id" element={<Profile />} />
             <Route path="/" element={<Home />} />
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </MainPageLayout>
       </React.Fragment>
