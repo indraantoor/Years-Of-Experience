@@ -5,6 +5,7 @@ import { MainPageLayout } from "./pages/shared/MainPageLayout";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Profile } from "./pages/Profile";
 import { PageNotFound } from "./pages/shared/PageNotFound";
+import { EditProfile } from "./pages/EditProfile";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <GlobalStyle />
         <MainPageLayout>
           <Routes>
+            <Route path="/profile/edit/:id" element={<EditProfile />} />
             <Route path="/profile/:id" element={<Profile />} />
             <Route path="/" element={<Home />} />
             <Route path="*" element={<PageNotFound />} />
