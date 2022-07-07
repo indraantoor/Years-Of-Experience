@@ -27,7 +27,7 @@ export const Navbar = () => {
           <button>Sign In</button>
         </li>
         <li>
-          <button class="outline-button">Register</button>
+          <button className="outline-button">Register</button>
         </li>
       </ul>
     </NavbarContainer>

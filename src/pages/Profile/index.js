@@ -1,16 +1,30 @@
 import React from "react";
+import {
+  BasicDetailsContainer,
+  ProfilePictureContainer,
+} from "./profile.style";
 
 export const Profile = () => {
   return (
     <React.Fragment>
       <h2>Profile</h2>
 
-      <div>
-        <h3>Basic Details</h3>
-        <div>Name: Indraan</div>
-        <div>Profile Pic: default</div>
-        <div>Age: 20</div>
-      </div>
+      <BasicDetailsContainer>
+        <ProfilePictureContainer>
+          <img
+            src="https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="user"
+          />
+        </ProfilePictureContainer>
+
+        <div className="details-wrapper">
+          <h3>Indraan S Toor</h3>
+          <div>
+            @<span id="username">indraantoor</span>
+          </div>
+          <div>Age: 20</div>
+        </div>
+      </BasicDetailsContainer>
 
       <div>
         <h3>Work Experiences</h3>
