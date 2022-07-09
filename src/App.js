@@ -17,7 +17,7 @@ const App = () => {
         <MainPageLayout>
           <Routes>
             <Route
-              path="/profile/:id/edit/workexperiences"
+              path="/profile/:id/edit/workexperience/:id"
               element={<WorkExperiencesEdit />}
             />
             <Route

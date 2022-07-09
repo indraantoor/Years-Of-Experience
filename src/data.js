@@ -1,4 +1,5 @@
 const workExperience1 = {
+  id: 1,
   jobTitle: "Fullstack Intern",
   startDate: "June 2014",
   endDate: "March 2017",
@@ -10,6 +11,7 @@ const workExperience1 = {
 };
 
 const workExperience2 = {
+  id: 2,
   jobTitle: "SDE 1",
   startDate: "June 2014",
   endDate: null,
@@ -21,6 +23,7 @@ const workExperience2 = {
 };
 
 const user = {
+  id: 1,
   name: "Indraan S Toor",
   username: "indraantoor",
   profilePic:
