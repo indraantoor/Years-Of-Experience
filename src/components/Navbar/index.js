@@ -1,4 +1,5 @@
 import { NavbarContainer } from "./navbar.style";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
@@ -6,22 +7,20 @@ export const Navbar = () => {
       <ul>
         <li>
           <h1>
-            <a href="https://localhost:3000" id="logo-title">
-              Years Of Experience
-            </a>
+            <Link to="/">Years Of Experience</Link>
           </h1>
         </li>
         <li>
-          <a href="https://localhost:3000">Homepage</a>
+          <Link to="/">Homepage</Link>
         </li>
         <li>
-          <a href="https://localhost:3000">About Us</a>
+          <Link to="/">About Us</Link>
         </li>
         <li>
-          <a href="https://localhost:3000">Contact</a>
+          <Link to="/">Contact</Link>
         </li>
         <li>
-          <a href="https://localhost:3000">Profile</a>
+          <Link to="/profile/indraantoor">Profile</Link>
         </li>
         <li>
           <button>Sign In</button>
