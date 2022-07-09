@@ -46,6 +46,8 @@ export const CompanyLogoContainer = styled.div`
   margin-left: 1%;
 
   img {
+    height: 100%;
     width: 100%;
+    object-fit: cover;
   }
 `;
