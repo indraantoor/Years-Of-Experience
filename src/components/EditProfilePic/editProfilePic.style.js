@@ -13,7 +13,7 @@ export const Container = styled.div`
 
   button {
     width: 7rem;
-    padding: 7px;
+    padding: 10px;
     cursor: pointer;
     background-color: var(--secondary);
     color: var(--primary);
@@ -21,9 +21,13 @@ export const Container = styled.div`
     border-radius: 5px;
   }
 
-  label,
-  button {
+  label {
     margin-top: 15px;
+    font-weight: 500;
+  }
+
+  button {
+    margin-top: 25px;
   }
 
   input {
@@ -33,7 +37,7 @@ export const Container = styled.div`
 
   .image-container {
     background-color: red;
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 150px;
   }
 `;

@@ -6,7 +6,7 @@ export const EditProfilePic = () => {
     <Container>
       <div className="image-container">image</div>
       <label htmlFor="profileimg">
-        Profile Picture:
+        Profile Picture
         <input type="file" id="profileimg" />
       </label>
       <button type="submit">Update</button>

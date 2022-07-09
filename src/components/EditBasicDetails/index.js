@@ -6,15 +6,15 @@ export const EditBasicDetails = () => {
     <React.Fragment>
       <FormContainer>
         <label htmlFor="name">
-          Name:
+          Name
           <input type="text" id="name" placeholder="Name" />
         </label>
         <label htmlFor="username">
-          Username:
+          Username
           <input type="text" id="username" placeholder="Username" />
         </label>
         <label htmlFor="age">
-          Age:
+          Age
           <input type="number" id="age" min="0" max="100" placeholder="Age" />
         </label>
         <button type="submit">Update</button>
