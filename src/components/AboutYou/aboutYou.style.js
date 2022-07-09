@@ -16,7 +16,7 @@ export const DetailsWrapper = styled.div`
   border-radius: 8px;
 
   button {
-    margin-top: 20px;
+    margin: 15px;
     width: 100px;
     padding: 8px;
     cursor: pointer;

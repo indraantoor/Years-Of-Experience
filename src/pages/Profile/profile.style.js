@@ -73,4 +73,7 @@ export const WorkExperiencesContainer = styled.div`
   width: 32rem;
   background-color: var(--primary-white);
   box-shadow: 0 0 8px #ebeded;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
 `;
