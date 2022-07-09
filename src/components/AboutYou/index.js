@@ -51,6 +51,7 @@ export const AboutYou = () => {
                 key={workExperience.id}
                 title={workExperience.jobTitle}
                 startDate={workExperience.startDate}
+                endDate={workExperience.endDate}
                 isCurrentlyWorking={String(workExperience.isCurrentlyWorking)}
                 company={workExperience.companyName}
                 companyLogoUrl={workExperience.companyLogo}

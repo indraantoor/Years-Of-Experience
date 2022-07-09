@@ -8,6 +8,7 @@ import {
 } from "./profile.style";
 import { data } from "../../data";
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 // function compareExperiences(firstExperience, secondExperience) {
 //   if (firstExperience.isCurrentlyWorking === "true") {
@@ -18,6 +19,7 @@ import { useState } from "react";
 
 export const Profile = () => {
   const [userData, setUserData] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     setUserData(data);
@@ -43,7 +45,6 @@ export const Profile = () => {
           <div>Age: {Number(userData.age)}</div>
         </div>
       </BasicDetailsContainer>
-
       <WorkExperiencesContainer>
         <h3 style={{ fontSize: "1.3rem" }}>Work Experiences</h3>
         {isValidExperiencesCollection &&
@@ -60,6 +61,9 @@ export const Profile = () => {
             />
           ))}
       </WorkExperiencesContainer>
+      <Link to={location.pathname + "/edit/"}>
+        <button className="editProfileBtn">Edit Profile</button>
+      </Link>
     </Container>
   );
 };

@@ -5,6 +5,17 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  .editProfileBtn {
+    padding: 10px;
+    width: 130px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    background-color: var(--secondary);
+    color: var(--primary);
+    border: 1px solid var(--secondary);
+    border-radius: 5px;
+  }
 `;
 
 export const BasicDetailsContainer = styled.div`
