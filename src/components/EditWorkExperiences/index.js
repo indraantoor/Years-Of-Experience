@@ -1,4 +1,5 @@
 import { FormContainer, Container } from "./editWorkExperiences.style";
+import { useNavigate } from "react-router-dom";
 
 export const EditWorkExperiences = ({
   jobTitle,
@@ -8,6 +9,8 @@ export const EditWorkExperiences = ({
   jobDescription,
   isCurrentlyWorking,
 }) => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <FormContainer>
@@ -59,6 +62,9 @@ export const EditWorkExperiences = ({
         <div>
           <button id="removebtn">Remove</button>
           <button type="submit">Update</button>
+          <button id="cancel" onClick={() => navigate(-1)}>
+            Cancel
+          </button>
         </div>
       </FormContainer>
     </Container>

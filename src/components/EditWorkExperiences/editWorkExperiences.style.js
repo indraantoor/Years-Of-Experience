@@ -30,14 +30,10 @@ export const FormContainer = styled.div`
     width: 100px;
     padding: 10px;
     cursor: pointer;
-    background-color: var(--primary-white);
-    color: var(--primary);
-    border: 1px solid var(--primary-accent);
+    background-color: var(--primary);
+    color: var(--primary-white);
+    border: 1px solid var(--primary);
     border-radius: 5px;
-  }
-
-  #removebtn:hover {
-    background-color: var(--primary-accent);
   }
 
   label {
@@ -80,5 +76,19 @@ export const FormContainer = styled.div`
   #companyName,
   #jobDescription {
     width: 96%;
+  }
+
+  #cancel {
+    width: 100px;
+    padding: 10px;
+    background-color: var(--primary-white);
+    border: 1px solid var(--secondary-accent);
+    color: var(--primary);
+    border-radius: 5px;
+  }
+
+  #cancel:hover {
+    background-color: var(--secondary-accent);
+    color: var(--primary-white);
   }
 `;
