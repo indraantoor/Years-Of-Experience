@@ -14,7 +14,7 @@ const App = () => {
         <GlobalStyle />
         <MainPageLayout>
           <Routes>
-            <Route path="/profile/edit/:id" element={<EditProfile />} />
+            <Route path="/profile/:id/edit" element={<EditProfile />} />
             <Route path="/profile/:id" element={<Profile />} />
             <Route path="/" element={<Home />} />
             <Route path="*" element={<PageNotFound />} />

@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
 export const FormContainer = styled.div`
-  border: 1px solid black;
-  padding: 1.5rem;
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   margin: 2%;
+  background-color: var(--primary-white);
+  box-shadow: 0 0 8px #ebeded;
+  border-radius: 8px;
 
   button {
     width: 7rem;
