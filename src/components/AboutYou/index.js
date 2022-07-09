@@ -9,10 +9,11 @@ import {
 } from "./aboutYou.style";
 import { data } from "../../data";
 import { WorkExperience } from "../WorkExperience";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export const AboutYou = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   return (
     <Container>
@@ -65,6 +66,9 @@ export const AboutYou = () => {
             </>
           ))}
       </DetailsWrapper>
+      <button className="cancelBtn" onClick={() => navigate(-1)}>
+        Cancel
+      </button>
     </Container>
   );
 };

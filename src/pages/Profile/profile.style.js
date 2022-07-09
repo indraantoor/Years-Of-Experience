@@ -70,7 +70,7 @@ export const WorkExperiencesContainer = styled.div`
   padding: 2rem;
   margin-bottom: 30px;
   border-radius: 8px;
-  width: 32rem;
+  width: 38rem;
   background-color: var(--primary-white);
   box-shadow: 0 0 8px #ebeded;
   display: flex;

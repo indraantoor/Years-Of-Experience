@@ -5,6 +5,22 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  .cancelBtn {
+    width: 100px;
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 2%;
+    background-color: var(--primary-white);
+    color: var(--primary);
+    border: 1px solid var(--secondary-accent);
+    border-radius: 5px;
+  }
+
+  .cancelBtn:hover {
+    background-color: var(--secondary-accent);
+    color: var(--primary-white);
+  }
 `;
 
 export const DetailsWrapper = styled.div`
