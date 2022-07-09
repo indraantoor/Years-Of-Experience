@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const BasicDetailsContainer = styled.div`
   background-color: var(--primary);
-  width: 32rem;
+  width: 45rem;
   margin: 2%;
   max-width: 750px;
   display: flex;
@@ -29,7 +29,6 @@ export const BasicDetailsContainer = styled.div`
   }
 
   .details-wrapper {
-    // background-color: green;
     margin-left: 5%;
 
     div {
@@ -54,4 +53,12 @@ export const ProfilePictureContainer = styled.div`
     width: 100%;
     cursor: pointer;
   }
+`;
+
+export const WorkExperiencesContainer = styled.div`
+  padding: 2rem;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  background-color: var(--primary-white);
+  box-shadow: 0 0 8px #ebeded;
 `;

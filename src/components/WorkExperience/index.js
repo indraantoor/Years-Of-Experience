@@ -19,7 +19,7 @@ export const WorkExperience = ({
         <div id="duration">
           Start Date: {startDate} - End Date:
           <span className={!!isCurrentlyWorking ? "isWorking" : "finished"}>
-            {!!isCurrentlyWorking ? " Present" : `${" " + endDate}`}
+            {isCurrentlyWorking === "true" ? " Present" : `${" " + endDate}`}
           </span>
         </div>
         <div id="company">{company}</div>
