@@ -9,14 +9,19 @@ import {
 } from "./aboutYou.style";
 import { data } from "../../data";
 import { WorkExperience } from "../WorkExperience";
+import { Link, useLocation } from "react-router-dom";
 
 export const AboutYou = () => {
+  const location = useLocation();
+
   return (
     <Container>
       <DetailsWrapper>
         <EditWrapper>
           <h2>About You</h2>
-          <button>Edit</button>
+          <Link to={location.pathname + "basic"}>
+            <button>Edit</button>
+          </Link>
         </EditWrapper>
         <DetailsContainer>
           <ProfilePictureContainer>
@@ -43,6 +48,7 @@ export const AboutYou = () => {
           data.workExperiences.map((workExperience) => (
             <>
               <WorkExperience
+                key={workExperience.id}
                 title={workExperience.jobTitle}
                 startDate={workExperience.startDate}
                 isCurrentlyWorking={String(workExperience.isCurrentlyWorking)}
@@ -50,7 +56,11 @@ export const AboutYou = () => {
                 companyLogoUrl={workExperience.companyLogo}
                 description={workExperience.jobDescription}
               />
-              <button>Edit</button>
+              <Link
+                to={location.pathname + "workexperience/" + workExperience.id}
+              >
+                <button>Edit</button>
+              </Link>
             </>
           ))}
       </DetailsWrapper>
