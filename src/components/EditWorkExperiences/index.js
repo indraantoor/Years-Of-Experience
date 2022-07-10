@@ -8,7 +8,6 @@ import moment from "moment";
 export const EditWorkExperiences = () => {
   const [updatedDetails, setUpdatedDetails] = useState({});
   const [maxDate, setMaxDate] = useState("");
-  const [isDisabled, setIsDisabled] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
 
   const params = useParams();
@@ -29,7 +28,8 @@ export const EditWorkExperiences = () => {
   useEffect(() => {
     if (isChecked) {
       setUpdatedDetails((prev) => {
-        return { ...prev, isCurrentlyWorking: true };
+        const { endDate, ...withoutEndDate } = prev;
+        return { ...withoutEndDate, isCurrentlyWorking: true };
       });
     } else {
       setUpdatedDetails((prev) => {
@@ -96,7 +96,7 @@ export const EditWorkExperiences = () => {
                 name="endDate"
                 max={maxDate}
                 onChange={handleChange}
-                disabled={isDisabled ? true : false}
+                disabled={isChecked ? true : false}
               />
             </label>
           </div>
