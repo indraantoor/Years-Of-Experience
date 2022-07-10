@@ -22,6 +22,12 @@ export const EditWorkExperiences = () => {
   );
 
   useEffect(() => {
+    if (Boolean(workExperience.isCurrentlyWorking)) {
+      setIsChecked(true);
+    }
+  }, [workExperience]);
+
+  useEffect(() => {
     setUpdatedDetails(workExperience);
   }, [workExperience]);
 
@@ -60,7 +66,7 @@ export const EditWorkExperiences = () => {
     dispatch(workExperiencesSlice.actions.update(updatedDetails));
   };
 
-  console.log(updatedDetails);
+  console.log(isChecked);
 
   return (
     <Container>
@@ -106,6 +112,7 @@ export const EditWorkExperiences = () => {
               type="checkbox"
               id="currentlyworking"
               name="isCurrentlyWorking"
+              checked={isChecked ? true : false}
               value="true"
               onChange={handleCheckbox}
             />
