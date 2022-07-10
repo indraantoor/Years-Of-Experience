@@ -8,6 +8,8 @@ import moment from "moment";
 export const EditWorkExperiences = () => {
   const [updatedDetails, setUpdatedDetails] = useState({});
   const [maxDate, setMaxDate] = useState("");
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   const params = useParams();
   const { workExperienceId } = params;
@@ -25,6 +27,18 @@ export const EditWorkExperiences = () => {
   }, [workExperience]);
 
   useEffect(() => {
+    if (isChecked) {
+      setUpdatedDetails((prev) => {
+        return { ...prev, isCurrentlyWorking: true };
+      });
+    } else {
+      setUpdatedDetails((prev) => {
+        return { ...prev, isCurrentlyWorking: false };
+      });
+    }
+  }, [isChecked]);
+
+  useEffect(() => {
     const date = new Date();
     setMaxDate(moment(date).format("YYYY-MM-DD"));
   }, []);
@@ -35,6 +49,10 @@ export const EditWorkExperiences = () => {
     setUpdatedDetails((prev) => {
       return { ...prev, [event.target.name]: event.target.value };
     });
+  };
+
+  const handleCheckbox = (event) => {
+    setIsChecked(!isChecked);
   };
 
   const handleClick = (event) => {
@@ -78,12 +96,19 @@ export const EditWorkExperiences = () => {
                 name="endDate"
                 max={maxDate}
                 onChange={handleChange}
+                disabled={isDisabled ? true : false}
               />
             </label>
           </div>
           <label htmlFor="currentlyworking">
             Currently Working
-            <input type="checkbox" id="currentlyworking" />
+            <input
+              type="checkbox"
+              id="currentlyworking"
+              name="isCurrentlyWorking"
+              value="true"
+              onChange={handleCheckbox}
+            />
           </label>
           <label htmlFor="companyName">
             Company
