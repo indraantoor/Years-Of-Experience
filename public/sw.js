@@ -1,3 +1,5 @@
+import { workbox } from "workbox-core";
+
 let cacheData = "appV1";
 
 this.addEventListener("install", (event) => {
@@ -26,3 +28,5 @@ this.addEventListener("fetch", (event) => {
     );
   }
 });
+
+workbox.routing.registerRoute();

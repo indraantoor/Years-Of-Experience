@@ -16,5 +16,5 @@ root.render(
   </React.StrictMode>
 );
 
-swDev();
-// serviceWorkerRegistration.register();
+// swDev();
+serviceWorkerRegistration.register();
