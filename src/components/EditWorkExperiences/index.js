@@ -11,7 +11,7 @@ export const EditWorkExperiences = () => {
   const [isChecked, setIsChecked] = useState(false);
 
   const params = useParams();
-  const { workExperienceId } = params;
+  const { workExperienceId, profileId } = params;
 
   const dispatch = useDispatch();
 
@@ -32,19 +32,6 @@ export const EditWorkExperiences = () => {
   }, [workExperience]);
 
   useEffect(() => {
-    if (isChecked) {
-      setUpdatedDetails((prev) => {
-        const { endDate, ...withoutEndDate } = prev;
-        return { ...withoutEndDate, isCurrentlyWorking: true };
-      });
-    } else {
-      setUpdatedDetails((prev) => {
-        return { ...prev, isCurrentlyWorking: false };
-      });
-    }
-  }, [isChecked]);
-
-  useEffect(() => {
     const date = new Date();
     setMaxDate(moment(date).format("YYYY-MM-DD"));
   }, []);
@@ -58,12 +45,24 @@ export const EditWorkExperiences = () => {
   };
 
   const handleCheckbox = (event) => {
+    const check = !isChecked;
     setIsChecked(!isChecked);
+    if (check) {
+      setUpdatedDetails((prev) => {
+        const { endDate, ...withoutEndDate } = prev;
+        return { ...withoutEndDate, isCurrentlyWorking: true };
+      });
+    } else {
+      setUpdatedDetails((prev) => {
+        return { ...prev, isCurrentlyWorking: false };
+      });
+    }
   };
 
-  const handleClick = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(workExperiencesSlice.actions.update(updatedDetails));
+    navigate(-1);
   };
 
   console.log(isChecked);
@@ -71,7 +70,7 @@ export const EditWorkExperiences = () => {
   return (
     <Container>
       <FormContainer>
-        <form onSubmit={handleClick}>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="title">
             Job Title
             <input
@@ -144,20 +143,24 @@ export const EditWorkExperiences = () => {
             />
           </label>
           <div>
-            <button
-              id="removebtn"
-              onClick={() =>
-                dispatch(workExperiencesSlice.actions.delete(workExperienceId))
-              }
-            >
-              Remove
-            </button>
             <button type="submit">Update</button>
-            <button id="cancel" onClick={() => navigate(-1)}>
-              Cancel
-            </button>
           </div>
         </form>
+        <div>
+          <button
+            id="removebtn"
+            onClick={(event) => {
+              event.preventDefault();
+              dispatch(workExperiencesSlice.actions.delete(workExperienceId));
+              navigate("/profile/" + profileId);
+            }}
+          >
+            Remove
+          </button>
+          <button id="cancel" onClick={() => navigate(-1)}>
+            Cancel
+          </button>
+        </div>
       </FormContainer>
     </Container>
   );
