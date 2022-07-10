@@ -1,9 +1,9 @@
 import { EditWorkExperiences } from "../../components/EditWorkExperiences";
 import { Container } from "./workExperiencesEdit";
-import { workExperiencesData } from "../../data";
+import { useSelector } from "react-redux";
 
 export const WorkExperiencesEdit = () => {
-  const workExperience = workExperiencesData.workExperiences[0];
+  const workExperience = useSelector((state) => state.workExperiences[0]);
 
   return (
     <Container>

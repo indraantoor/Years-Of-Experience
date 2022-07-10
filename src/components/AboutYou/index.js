@@ -7,25 +7,24 @@ import {
   ProfilePictureContainer,
   EditWrapper,
 } from "./aboutYou.style";
-import { data, workExperiencesData } from "../../data";
 import { WorkExperience } from "../WorkExperience";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 export const AboutYou = () => {
-  const [userData, setUserData] = useState({});
-  const [workExperiences, setWorkExperiences] = useState([]);
+  const userData = useSelector((state) => state.userDetails);
+  const workExperiences = useSelector((state) => state.workExperiences);
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setUserData(data);
-  }, []);
+  // useEffect(() => {
+  //   setUserData(data);
+  // }, []);
 
-  useEffect(() => {
-    setWorkExperiences(workExperiencesData.workExperiences);
-  }, []);
+  // useEffect(() => {
+  //   setWorkExperiences(workExperiencesData.workExperiences);
+  // }, []);
 
   const isValidExperiencesCollection =
     workExperiences && workExperiences.length > 0 ? true : false;

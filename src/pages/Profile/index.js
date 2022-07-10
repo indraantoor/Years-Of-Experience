@@ -6,10 +6,8 @@ import {
   Container,
   WorkExperiencesContainer,
 } from "./profile.style";
-import { data, workExperiencesData } from "../../data";
-import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 // function compareExperiences(firstExperience, secondExperience) {
 //   if (firstExperience.isCurrentlyWorking === "true") {
 //     return -1;
@@ -18,17 +16,17 @@ import { Link, useLocation } from "react-router-dom";
 // }
 
 export const Profile = () => {
-  const [userData, setUserData] = useState({});
-  const [workExperiences, setWorkExperiences] = useState([]);
+  const userData = useSelector((state) => state.userDetails);
+  const workExperiences = useSelector((state) => state.workExperiences);
   const location = useLocation();
 
-  useEffect(() => {
-    setUserData(data);
-  }, []);
+  // useEffect(() => {
+  //   setUserData(data);
+  // }, []);
 
-  useEffect(() => {
-    setWorkExperiences(workExperiencesData.workExperiences);
-  }, []);
+  // useEffect(() => {
+  //   setWorkExperiences(workExperiencesData.workExperiences);
+  // }, []);
 
   const isValidExperiencesCollection =
     workExperiences && workExperiences.length > 0 ? true : false;
