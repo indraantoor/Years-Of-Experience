@@ -59,10 +59,24 @@ export const EditWorkExperiences = () => {
     }
   };
 
+  const isValidDuration = (startDate, endDate) => {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    return start < end ? true : false;
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!isChecked) {
+      const { startDate, endDate } = updatedDetails;
+      isValidDuration(startDate, endDate);
+    }
     dispatch(workExperiencesSlice.actions.update(updatedDetails));
     navigate(-1);
+  };
+
+  const formatDate = (date) => {
+    return moment(new Date(date)).format("YYYY-MM-DD");
   };
 
   console.log(isChecked);
@@ -90,6 +104,7 @@ export const EditWorkExperiences = () => {
                 id="startdate"
                 name="startDate"
                 max={maxDate}
+                value={String(formatDate(updatedDetails.startDate))}
                 onChange={handleChange}
               />
             </label>
@@ -100,6 +115,7 @@ export const EditWorkExperiences = () => {
                 id="enddate"
                 name="endDate"
                 max={maxDate}
+                value={String(formatDate(updatedDetails.endDate))}
                 onChange={handleChange}
                 disabled={isChecked ? true : false}
               />
