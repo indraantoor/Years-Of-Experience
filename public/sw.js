@@ -8,17 +8,21 @@ this.addEventListener("install", (event) => {
         "/index.html",
         "/",
         "/profile/indraantoor",
+        "/profile/indraantoor/edit",
+        "/profile/indraantoor/edit/basic",
       ]);
     })
   );
 });
 
 this.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then((res) => {
-      if (res) {
-        return res;
-      }
-    })
-  );
+  if (!navigator.onLine) {
+    event.respondWith(
+      caches.match(event.request).then((res) => {
+        if (res) {
+          return res;
+        }
+      })
+    );
+  }
 });
