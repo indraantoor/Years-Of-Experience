@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { FormContainer } from "./editBasicDetails.style";
+import { useDispatch } from "react-redux";
+import { userDetailsSlice } from "../../store/userDetailsSlice";
 
 export const EditBasicDetails = () => {
   const [updatedDetails, setUpdatedDetails] = useState({});
+  const dispatch = useDispatch();
 
   const handleChange = (event) => {
     setUpdatedDetails((prev) => {
@@ -10,12 +13,17 @@ export const EditBasicDetails = () => {
     });
   };
 
+  const handleClick = (event) => {
+    event.preventDefault();
+    dispatch(userDetailsSlice.actions.update(updatedDetails));
+  };
+
   console.log(updatedDetails);
 
   return (
     <React.Fragment>
       <FormContainer>
-        <form>
+        <form onSubmit={handleClick}>
           <label htmlFor="name">
             Name
             <input

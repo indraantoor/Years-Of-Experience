@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+function updateDetails(state, action) {
+  for (let property in action.payload) {
+    state[property] = action.payload[property];
+  }
+}
+
 const initialState = {
   id: 1,
   name: "Indraan S Toor",
@@ -12,7 +18,7 @@ const initialState = {
 export const userDetailsSlice = createSlice({
   name: "userDetails",
   initialState,
-  updateName: (state, action) => {
-    state.name = action.payload.name;
+  reducers: {
+    update: updateDetails,
   },
 });
