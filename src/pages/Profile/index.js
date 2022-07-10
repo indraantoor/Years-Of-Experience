@@ -6,7 +6,7 @@ import {
   Container,
   WorkExperiencesContainer,
 } from "./profile.style";
-import { data } from "../../data";
+import { data, workExperiencesData } from "../../data";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -18,17 +18,22 @@ import { Link, useLocation } from "react-router-dom";
 // }
 
 export const Profile = () => {
-  const [userData, setUserData] = useState([]);
+  const [userData, setUserData] = useState({});
+  const [workExperiences, setWorkExperiences] = useState([]);
   const location = useLocation();
 
   useEffect(() => {
     setUserData(data);
   }, []);
 
+  useEffect(() => {
+    setWorkExperiences(workExperiencesData.workExperiences);
+  }, []);
+
+  console.log(workExperiences);
+
   const isValidExperiencesCollection =
-    userData.workExperiences && userData.workExperiences.length > 0
-      ? true
-      : false;
+    workExperiences && workExperiences.length > 0 ? true : false;
 
   return (
     <Container>
@@ -48,9 +53,9 @@ export const Profile = () => {
       <WorkExperiencesContainer>
         <h3 style={{ fontSize: "1.3rem" }}>Work Experiences</h3>
         {isValidExperiencesCollection &&
-          userData.workExperiences.map((workExperience) => (
+          workExperiences.map((workExperience, i) => (
             <WorkExperience
-              key={workExperience.id}
+              key={i}
               title={workExperience.jobTitle}
               startDate={workExperience.startDate}
               endDate={workExperience.endDate}
