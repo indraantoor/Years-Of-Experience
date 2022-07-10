@@ -40,6 +40,7 @@ export const FormContainer = styled.div`
     margin-top: 10px;
     font-weight: 500;
     width: 100%;
+    display: block;
   }
 
   input,

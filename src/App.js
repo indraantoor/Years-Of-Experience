@@ -17,15 +17,15 @@ const App = () => {
         <MainPageLayout>
           <Routes>
             <Route
-              path="/profile/:id/edit/workexperience/:id"
+              path="/profile/:profileId/edit/workexperience/:workExperienceId"
               element={<WorkExperiencesEdit />}
             />
             <Route
-              path="/profile/:id/edit/basic"
+              path="/profile/:profileId/edit/basic"
               element={<BasicDetailsEdit />}
             />
-            <Route path="/profile/:id/edit" element={<EditProfile />} />
-            <Route path="/profile/:id" element={<Profile />} />
+            <Route path="/profile/:profileId/edit" element={<EditProfile />} />
+            <Route path="/profile/:profileId" element={<Profile />} />
             <Route path="/" element={<Home />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>

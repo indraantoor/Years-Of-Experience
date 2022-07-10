@@ -51,5 +51,16 @@ export const workExperiencesSlice = createSlice({
     add: (state, action) => {
       state.push(createWorkExperience(action.payload));
     },
+    update: updateWorkExperience,
   },
 });
+
+function updateWorkExperience(state, action) {
+  const selectedItemIndex = state.findIndex(
+    (experience) => experience.id == action.payload.id
+  );
+
+  for (let property in action.payload) {
+    state[selectedItemIndex][property] = action.payload[property];
+  }
+}
