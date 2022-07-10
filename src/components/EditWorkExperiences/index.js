@@ -144,7 +144,14 @@ export const EditWorkExperiences = () => {
             />
           </label>
           <div>
-            <button id="removebtn">Remove</button>
+            <button
+              id="removebtn"
+              onClick={() =>
+                dispatch(workExperiencesSlice.actions.delete(workExperienceId))
+              }
+            >
+              Remove
+            </button>
             <button type="submit">Update</button>
             <button id="cancel" onClick={() => navigate(-1)}>
               Cancel
