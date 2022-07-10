@@ -22,17 +22,18 @@ export const FormContainer = styled.div`
   }
 
   label {
-    margin-top: 15px;
     font-weight: 500;
   }
 
-  button {
-    margin-top: 25px;
+  .submitBtnContainer {
+    display: flex;
+    justify-content: center;
   }
 
   input {
     display: block;
     margin-top: 7px;
+    margin-bottom: 15px;
     padding: 10px;
   }
 `;
