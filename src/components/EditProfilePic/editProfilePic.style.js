@@ -39,5 +39,12 @@ export const Container = styled.div`
     background-color: red;
     height: 150px;
     width: 150px;
+    overflow: hidden;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
   }
 `;

@@ -1,4 +1,5 @@
 import { Container, CompanyLogoContainer } from "./workExperience.style";
+import moment from "moment";
 
 export const WorkExperience = ({
   title,
@@ -17,9 +18,14 @@ export const WorkExperience = ({
       <div>
         <h4>{title}</h4>
         <div id="duration">
-          Start Date: {startDate} - End Date:
-          <span className={!!isCurrentlyWorking ? "isWorking" : "finished"}>
-            {isCurrentlyWorking === "true" ? " Present" : `${" " + endDate}`}
+          Start Date: {moment(new Date(startDate)).format("MMM YYYY")} - End
+          Date:
+          <span
+            className={isCurrentlyWorking === "true" ? "isWorking" : "finished"}
+          >
+            {isCurrentlyWorking === "true"
+              ? " Present"
+              : `${" " + moment(new Date(endDate)).format("MMM YYYY")}`}
           </span>
         </div>
         <div id="company">{company}</div>
