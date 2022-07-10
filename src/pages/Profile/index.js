@@ -30,8 +30,6 @@ export const Profile = () => {
     setWorkExperiences(workExperiencesData.workExperiences);
   }, []);
 
-  console.log(workExperiences);
-
   const isValidExperiencesCollection =
     workExperiences && workExperiences.length > 0 ? true : false;
 

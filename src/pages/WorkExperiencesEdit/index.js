@@ -1,9 +1,9 @@
 import { EditWorkExperiences } from "../../components/EditWorkExperiences";
 import { Container } from "./workExperiencesEdit";
-import { data } from "../../data";
+import { workExperiencesData } from "../../data";
 
 export const WorkExperiencesEdit = () => {
-  const workExperience = data.workExperiences[0];
+  const workExperience = workExperiencesData.workExperiences[0];
 
   return (
     <Container>

@@ -7,13 +7,28 @@ import {
   ProfilePictureContainer,
   EditWrapper,
 } from "./aboutYou.style";
-import { data } from "../../data";
+import { data, workExperiencesData } from "../../data";
 import { WorkExperience } from "../WorkExperience";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export const AboutYou = () => {
+  const [userData, setUserData] = useState({});
+  const [workExperiences, setWorkExperiences] = useState([]);
+
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setUserData(data);
+  }, []);
+
+  useEffect(() => {
+    setWorkExperiences(workExperiencesData.workExperiences);
+  }, []);
+
+  const isValidExperiencesCollection =
+    workExperiences && workExperiences.length > 0 ? true : false;
 
   return (
     <Container>
@@ -26,18 +41,18 @@ export const AboutYou = () => {
         </EditWrapper>
         <DetailsContainer>
           <ProfilePictureContainer>
-            <img src={data.profilePic} alt="user" />
+            <img src={userData.profilePic} alt="user" />
           </ProfilePictureContainer>
           <Wrapper>
             <div>
-              <span>Name</span> {data.name}
+              <span>Name</span> {userData.name}
             </div>
             <div>
-              <span>Username</span> {data.username}
+              <span>Username</span> {userData.username}
             </div>
             <div>
               <span>Age</span>
-              {data.age}
+              {userData.age}
             </div>
           </Wrapper>
         </DetailsContainer>
@@ -45,11 +60,10 @@ export const AboutYou = () => {
 
       <DetailsWrapper>
         <h2>Work Experiences</h2>
-        {data.workExperiences.length > 0 &&
-          data.workExperiences.map((workExperience) => (
-            <>
+        {isValidExperiencesCollection &&
+          workExperiences.map((workExperience, i) => (
+            <div key={i}>
               <WorkExperience
-                key={workExperience.id}
                 title={workExperience.jobTitle}
                 startDate={workExperience.startDate}
                 endDate={workExperience.endDate}
@@ -63,7 +77,7 @@ export const AboutYou = () => {
               >
                 <button>Edit</button>
               </Link>
-            </>
+            </div>
           ))}
       </DetailsWrapper>
       <button className="cancelBtn" onClick={() => navigate(-1)}>
