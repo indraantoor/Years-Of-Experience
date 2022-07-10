@@ -29,7 +29,6 @@ const user = {
   profilePic:
     "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   age: 20,
-  // workExperiences: [workExperience1, workExperience2],
 };
 
 export const workExperiencesData = {
@@ -39,6 +38,7 @@ export const workExperiencesData = {
 export const data = user;
 
 /*
+
   data: {
     id: 1,
     name: "Indraan S Toor",
@@ -74,9 +74,6 @@ export const data = user;
       }
     ]
   }
-
-
-
 
 
 
