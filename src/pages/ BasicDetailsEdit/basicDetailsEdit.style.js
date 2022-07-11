@@ -32,4 +32,6 @@ export const Container = styled.div`
 export const EditBasicDetailsContainer = styled.div`
   display: flex;
   justify-content: center;
+  gap: 1rem;
+  margin-top: 2%;
 `;
