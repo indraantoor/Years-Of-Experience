@@ -8,6 +8,8 @@ import {
 } from "./profile.style";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { fetchUserDetailsFromApi } from "../../store/userDetailsSlice";
 // function compareExperiences(firstExperience, secondExperience) {
 //   if (firstExperience.isCurrentlyWorking === "true") {
 //     return -1;
@@ -16,6 +18,16 @@ import { useSelector } from "react-redux";
 // }
 
 export const Profile = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const userId = "V4QsOhuPZXQHXJ2Dw8QI";
+    dispatch(fetchUserDetailsFromApi(userId));
+  }, []);
+
+  // const res = localStorage.getItem("updatedDetails");
+  // console.log(res);
+
   const userData = useSelector((state) => state.userDetails);
   const workExperiences = useSelector((state) => state.workExperiences);
   const isUserLoading = useSelector((state) => state.userDetails.loading);

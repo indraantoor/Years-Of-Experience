@@ -10,14 +10,23 @@ import { BasicDetailsEdit } from "./pages/ BasicDetailsEdit";
 import { WorkExperiencesEdit } from "./pages/WorkExperiencesEdit";
 import { fetchUserDetailsFromApi } from "./store/userDetailsSlice";
 import { useDispatch } from "react-redux";
+import { onSnapshot, collection } from "@firebase/firestore";
+import { db } from "./firebase-config";
 
 const App = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    const userId = "V4QsOhuPZXQHXJ2Dw8QI";
-    dispatch(fetchUserDetailsFromApi(userId));
-  }, []);
+  // useEffect(() => {
+  //   const userId = "V4QsOhuPZXQHXJ2Dw8QI";
+  //   dispatch(fetchUserDetailsFromApi(userId));
+  // }, []);
+
+  // const unsub = onSnapshot(collection(db, "users"), (snapShot) => {
+  //   snapShot.docs.forEach((doc) => {
+  //     console.log({ id: doc.id, ...doc.data() });
+  //     console.log(doc);
+  //   });
+  // });
 
   return (
     <Router>

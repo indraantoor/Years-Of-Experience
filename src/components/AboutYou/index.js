@@ -10,8 +10,18 @@ import {
 import { WorkExperience } from "../WorkExperience";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchUserDetailsFromApi } from "../../store/userDetailsSlice";
 
 export const AboutYou = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const userId = "V4QsOhuPZXQHXJ2Dw8QI";
+    dispatch(fetchUserDetailsFromApi(userId));
+  }, []);
+
   const userData = useSelector((state) => state.userDetails);
   const workExperiences = useSelector((state) => state.workExperiences);
 
