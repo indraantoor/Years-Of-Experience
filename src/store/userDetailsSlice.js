@@ -3,12 +3,14 @@ import { doc, getDoc } from "@firebase/firestore";
 import { db } from "../firebase-config";
 
 const initialState = {
-  id: 1,
-  name: "Indraan S Toor",
-  username: "indraantoor",
-  profilePic:
-    "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  age: 20,
+  // id: 1,
+  // name: "Indraan S Toor",
+  // username: "indraantoor",
+  // profilePic:
+  //   "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  // age: 20,
+  loading: true,
+  error: true,
 };
 
 export const fetchUserDetailsFromApi = createAsyncThunk(
@@ -28,8 +30,18 @@ export const userDetailsSlice = createSlice({
     update: updateDetails,
   },
   extraReducers: {
+    [fetchUserDetailsFromApi.pending]: (state, action) => {
+      state.loading = true;
+      state.error = false;
+    },
     [fetchUserDetailsFromApi.fulfilled]: (state, action) => {
       updateDetails(state, action);
+      state.loading = false;
+      state.error = false;
+    },
+    [fetchUserDetailsFromApi.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = true;
     },
   },
 });

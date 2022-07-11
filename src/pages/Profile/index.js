@@ -18,15 +18,10 @@ import { useSelector } from "react-redux";
 export const Profile = () => {
   const userData = useSelector((state) => state.userDetails);
   const workExperiences = useSelector((state) => state.workExperiences);
+  const isUserLoading = useSelector((state) => state.userDetails.loading);
+  const isUserError = useSelector((state) => state.userDetails.error);
+
   const location = useLocation();
-
-  // useEffect(() => {
-  //   setUserData(data);
-  // }, []);
-
-  // useEffect(() => {
-  //   setWorkExperiences(workExperiencesData.workExperiences);
-  // }, []);
 
   const isValidExperiencesCollection =
     workExperiences && workExperiences.length > 0 ? true : false;
@@ -34,17 +29,25 @@ export const Profile = () => {
   return (
     <Container>
       <BasicDetailsContainer>
-        <ProfilePictureContainer>
-          <img src={userData.profilePic} alt="user" />
-        </ProfilePictureContainer>
+        {isUserLoading ? (
+          <h2>Loading...</h2>
+        ) : isUserError ? (
+          <h2>Error</h2>
+        ) : (
+          <React.Fragment>
+            <ProfilePictureContainer>
+              <img src={userData.profilePic} alt="user" />
+            </ProfilePictureContainer>
 
-        <div className="details-wrapper">
-          <h3>{userData.name}</h3>
-          <div>
-            @<span id="username">{userData.username}</span>
-          </div>
-          <div>Age: {Number(userData.age)}</div>
-        </div>
+            <div className="details-wrapper">
+              <h3>{userData.name}</h3>
+              <div>
+                @<span id="username">{userData.username}</span>
+              </div>
+              <div>Age: {Number(userData.age)}</div>
+            </div>
+          </React.Fragment>
+        )}
       </BasicDetailsContainer>
       <WorkExperiencesContainer>
         <h3 style={{ fontSize: "1.3rem" }}>Work Experiences</h3>

@@ -15,16 +15,11 @@ export const AboutYou = () => {
   const userData = useSelector((state) => state.userDetails);
   const workExperiences = useSelector((state) => state.workExperiences);
 
+  const isUserLoading = useSelector((state) => state.userDetails.loading);
+  const isUserError = useSelector((state) => state.userDetails.error);
+
   const location = useLocation();
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   setUserData(data);
-  // }, []);
-
-  // useEffect(() => {
-  //   setWorkExperiences(workExperiencesData.workExperiences);
-  // }, []);
 
   const isValidExperiencesCollection =
     workExperiences && workExperiences.length > 0 ? true : false;
@@ -39,21 +34,29 @@ export const AboutYou = () => {
           </Link>
         </EditWrapper>
         <DetailsContainer>
-          <ProfilePictureContainer>
-            <img src={userData.profilePic} alt="user" />
-          </ProfilePictureContainer>
-          <Wrapper>
-            <div>
-              <span>Name</span> {userData.name}
-            </div>
-            <div>
-              <span>Username</span> {userData.username}
-            </div>
-            <div>
-              <span>Age</span>
-              {userData.age}
-            </div>
-          </Wrapper>
+          {isUserLoading ? (
+            <h2>Loading...</h2>
+          ) : isUserError ? (
+            <h2>Error</h2>
+          ) : (
+            <React.Fragment>
+              <ProfilePictureContainer>
+                <img src={userData.profilePic} alt="user" />
+              </ProfilePictureContainer>
+              <Wrapper>
+                <div>
+                  <span>Name</span> {userData.name}
+                </div>
+                <div>
+                  <span>Username</span> {userData.username}
+                </div>
+                <div>
+                  <span>Age</span>
+                  {userData.age}
+                </div>
+              </Wrapper>
+            </React.Fragment>
+          )}
         </DetailsContainer>
       </DetailsWrapper>
 
