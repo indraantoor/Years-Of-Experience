@@ -1,4 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { doc, getDoc } from "@firebase/firestore";
+import { db } from "../firebase-config";
 
 const initialState = {
   id: 1,
@@ -9,11 +11,26 @@ const initialState = {
   age: 20,
 };
 
+export const fetchUserDetailsFromApi = createAsyncThunk(
+  "userDetails/fetchUserDetails",
+  async (userId) => {
+    const userRef = doc(db, "users", userId);
+    const user = await getDoc(userRef);
+    const response = { ...user.data(), id: userId };
+    return response;
+  }
+);
+
 export const userDetailsSlice = createSlice({
   name: "userDetails",
   initialState,
   reducers: {
     update: updateDetails,
+  },
+  extraReducers: {
+    [fetchUserDetailsFromApi.fulfilled]: (state, action) => {
+      updateDetails(state, action);
+    },
   },
 });
 
