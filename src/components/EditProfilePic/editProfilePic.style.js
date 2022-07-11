@@ -21,6 +21,12 @@ export const Container = styled.div`
     border-radius: 5px;
   }
 
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   label {
     margin-top: 15px;
     font-weight: 500;
@@ -40,6 +46,7 @@ export const Container = styled.div`
     height: 150px;
     width: 150px;
     overflow: hidden;
+    margin-bottom: 20px;
 
     img {
       height: 100%;
