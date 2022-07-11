@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { FormContainer } from "./editBasicDetails.style";
-import { useDispatch } from "react-redux";
-import { userDetailsSlice } from "../../store/userDetailsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  userDetailsSlice,
+  updateUserDetailsToApi,
+} from "../../store/userDetailsSlice";
 
 export const EditBasicDetails = () => {
   const [updatedDetails, setUpdatedDetails] = useState({});
+  const userId = useSelector((state) => state.userDetails.id);
+
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
@@ -16,9 +21,12 @@ export const EditBasicDetails = () => {
   const handleClick = (event) => {
     event.preventDefault();
     dispatch(userDetailsSlice.actions.update(updatedDetails));
+    const details = {
+      ...updatedDetails,
+      userId: userId,
+    };
+    dispatch(updateUserDetailsToApi(details));
   };
-
-  console.log(updatedDetails);
 
   return (
     <React.Fragment>

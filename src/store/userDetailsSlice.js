@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { doc, getDoc } from "@firebase/firestore";
+import { doc, getDoc, updateDoc } from "@firebase/firestore";
 import { db } from "../firebase-config";
 
 const initialState = {
@@ -23,6 +23,15 @@ export const fetchUserDetailsFromApi = createAsyncThunk(
   }
 );
 
+export const updateUserDetailsToApi = createAsyncThunk(
+  "userDetails/updateUserDetails",
+  async (details) => {
+    const { userId, ...updatedDetails } = details;
+    const userRef = doc(db, "users", userId);
+    await updateDoc(userRef, updatedDetails);
+  }
+);
+
 export const userDetailsSlice = createSlice({
   name: "userDetails",
   initialState,
@@ -40,6 +49,18 @@ export const userDetailsSlice = createSlice({
       state.error = false;
     },
     [fetchUserDetailsFromApi.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = true;
+    },
+    [updateUserDetailsToApi.pending]: (state, action) => {
+      state.loading = true;
+      state.error = false;
+    },
+    [updateUserDetailsToApi.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.error = false;
+    },
+    [updateUserDetailsToApi.rejected]: (state, action) => {
       state.loading = false;
       state.error = true;
     },
