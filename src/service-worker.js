@@ -63,6 +63,34 @@ registerRoute(
   })
 );
 
+// This allows the web app to trigger skipWaiting via
+// registration.waiting.postMessage({type: 'SKIP_WAITING'})
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
+});
+
+// Any other custom service worker logic can go here.
+
+// Cache the underlying font files with a cache-first strategy for 1 year.
+// @see https://developers.google.com/web/tools/workbox/guides/common-recipes#google_fonts
+registerRoute(
+  ({ url }) => url.origin === "https://fonts.gstatic.com",
+  new CacheFirst({
+    cacheName: "google-fonts-webfonts",
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+      new ExpirationPlugin({
+        maxAgeSeconds: 60 * 60 * 24 * 365,
+        maxEntries: 30,
+      }),
+    ],
+  })
+);
+
 // Cache external images
 registerRoute(
   ({ request }) => request.destination === "image",
@@ -80,12 +108,11 @@ registerRoute(
   })
 );
 
-// This allows the web app to trigger skipWaiting via
-// registration.waiting.postMessage({type: 'SKIP_WAITING'})
-self.addEventListener("message", (event) => {
-  if (event.data && event.data.type === "SKIP_WAITING") {
-    self.skipWaiting();
-  }
-});
-
-// Any other custom service worker logic can go here.
+// @see https://developers.google.com/web/tools/workbox/guides/common-recipes#cache_css_and_javascript_files
+registerRoute(
+  ({ request }) =>
+    request.destination === "script" || request.destination === "style",
+  new StaleWhileRevalidate({
+    cacheName: "static-resources",
+  })
+);
