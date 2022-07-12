@@ -10,6 +10,7 @@ import moment from "moment";
 import { removeEmptyValues, trimAllValues } from "../../utils";
 import { fetchUserDetailsFromApi } from "../../store/userDetailsSlice";
 import { fetchWorkExperiencesFromApi } from "../../store/workExperiencesSlice";
+import { EditCompanyPic } from "../EditCompanyPic";
 
 export const EditWorkExperiences = () => {
   const [updatedDetails, setUpdatedDetails] = useState({});
@@ -102,7 +103,7 @@ export const EditWorkExperiences = () => {
       }
     }
 
-    console.log(details);
+    // console.log(details);
     dispatch(workExperiencesSlice.actions.update(details));
     dispatch(updateWorkExperienceToApi(details));
     navigate(`/profile/${params.profileId}`);
@@ -123,6 +124,7 @@ export const EditWorkExperiences = () => {
           <h2>Loading...</h2>
         ) : (
           <React.Fragment>
+            <EditCompanyPic />
             <form onSubmit={handleSubmit}>
               <label htmlFor="title">
                 Job Title

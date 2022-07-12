@@ -67,7 +67,6 @@ export const fetchWorkExperiencesFromApi = createAsyncThunk(
       ...doc.data(),
       id: doc.id,
     }));
-    console.log(response);
     return response;
   }
 );
