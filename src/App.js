@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Profile } from "./pages/Profile";
 import { PageNotFound } from "./pages/shared/PageNotFound";
 import { EditProfile } from "./pages/EditProfile";
-import { BasicDetailsEdit } from "./pages/ BasicDetailsEdit";
+import { BasicDetailsEdit } from "./pages/BasicDetailsEdit";
 import { WorkExperiencesEdit } from "./pages/WorkExperiencesEdit";
 import { fetchUserDetailsFromApi } from "./store/userDetailsSlice";
 import { useDispatch } from "react-redux";

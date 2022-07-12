@@ -13,8 +13,12 @@ export const EditBasicDetails = () => {
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
+    console.log(String(event.target.value).trim());
     setUpdatedDetails((prev) => {
-      return { ...prev, [event.target.name]: event.target.value };
+      return {
+        ...prev,
+        [event.target.name]: String(event.target.value).trim(),
+      };
     });
   };
 
@@ -49,7 +53,10 @@ export const EditBasicDetails = () => {
               id="username"
               placeholder="Username"
               name="username"
-              onChange={handleChange}
+              onChange={(e) => {
+                e.target.value = String(e.target.value).replace(" ", "");
+                handleChange(e);
+              }}
             />
           </label>
           <label htmlFor="age">

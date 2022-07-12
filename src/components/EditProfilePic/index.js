@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "./editProfilePic.style";
 import { useSelector, useDispatch } from "react-redux";
 import { storage } from "../../firebase-config";
 import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage";
 import { userDetailsSlice } from "../../store/userDetailsSlice";
-import { updateUserDetailsToApi } from "../../store/userDetailsSlice";
+import {
+  updateUserDetailsToApi,
+  fetchUserDetailsFromApi,
+} from "../../store/userDetailsSlice";
 
 export const EditProfilePic = () => {
   const [file, setFile] = useState(null);
+
+  useEffect(() => {
+    const userId = "V4QsOhuPZXQHXJ2Dw8QI";
+    dispatch(fetchUserDetailsFromApi(userId));
+  }, []);
+
   const user = useSelector((state) => state.userDetails);
   const userId = useSelector((state) => state.userDetails.id);
 
