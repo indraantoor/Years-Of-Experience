@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchUserDetailsFromApi } from "../../store/userDetailsSlice";
+import { fetchWorkExperiencesFromApi } from "../../store/workExperiencesSlice";
 
 export const AboutYou = () => {
   const dispatch = useDispatch();
@@ -20,10 +21,11 @@ export const AboutYou = () => {
   useEffect(() => {
     const userId = "V4QsOhuPZXQHXJ2Dw8QI";
     dispatch(fetchUserDetailsFromApi(userId));
+    dispatch(fetchWorkExperiencesFromApi(userId));
   }, []);
 
   const userData = useSelector((state) => state.userDetails);
-  const workExperiences = useSelector((state) => state.workExperiences);
+  const workExperiences = useSelector((state) => state.workExperiences.data);
 
   const isUserLoading = useSelector((state) => state.userDetails.loading);
   const isUserError = useSelector((state) => state.userDetails.error);

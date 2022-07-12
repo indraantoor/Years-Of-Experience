@@ -1,10 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {
-  getFirestore,
-  enableIndexedDbPersistence,
-  initializeFirestore,
-  CACHE_SIZE_UNLIMITED,
-} from "@firebase/firestore";
+import { getFirestore, enableIndexedDbPersistence } from "@firebase/firestore";
 import { getStorage } from "@firebase/storage";
 
 const firebaseConfig = {

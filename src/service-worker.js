@@ -117,5 +117,3 @@ registerRoute(
     cacheName: "static-resources",
   })
 );
-
-console.log("sdhkjashdksajhdkjsadhkjsdhksajh");

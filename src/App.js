@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { GlobalStyle } from "./App.style";
 import { Home } from "./pages/Home";
 import { MainPageLayout } from "./pages/shared/MainPageLayout";
@@ -8,6 +8,8 @@ import { PageNotFound } from "./pages/shared/PageNotFound";
 import { EditProfile } from "./pages/EditProfile";
 import { BasicDetailsEdit } from "./pages/BasicDetailsEdit";
 import { WorkExperiencesEdit } from "./pages/WorkExperiencesEdit";
+import { db } from "./firebase-config";
+import { collection, getDocs } from "@firebase/firestore";
 
 const App = () => {
   return (

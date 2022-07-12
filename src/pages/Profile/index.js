@@ -10,6 +10,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { fetchUserDetailsFromApi } from "../../store/userDetailsSlice";
+import { fetchWorkExperiencesFromApi } from "../../store/workExperiencesSlice";
 // function compareExperiences(firstExperience, secondExperience) {
 //   if (firstExperience.isCurrentlyWorking === "true") {
 //     return -1;
@@ -23,13 +24,11 @@ export const Profile = () => {
   useEffect(() => {
     const userId = "V4QsOhuPZXQHXJ2Dw8QI";
     dispatch(fetchUserDetailsFromApi(userId));
+    dispatch(fetchWorkExperiencesFromApi(userId));
   }, []);
 
-  // const res = localStorage.getItem("updatedDetails");
-  // console.log(res);
-
   const userData = useSelector((state) => state.userDetails);
-  const workExperiences = useSelector((state) => state.workExperiences);
+  const workExperiences = useSelector((state) => state.workExperiences.data);
   const isUserLoading = useSelector((state) => state.userDetails.loading);
   const isUserError = useSelector((state) => state.userDetails.error);
 
