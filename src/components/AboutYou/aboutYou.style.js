@@ -7,8 +7,8 @@ export const Container = styled.div`
   align-items: center;
 
   .cancelBtn {
-    width: 100px;
-    padding: 10px;
+    width: 150px;
+    padding: 15px;
     cursor: pointer;
     margin-bottom: 2%;
     background-color: var(--primary-white);
@@ -24,7 +24,7 @@ export const Container = styled.div`
 `;
 
 export const DetailsWrapper = styled.div`
-  width: 50rem;
+  width: 80%;
   padding: 40px;
   margin: 2%;
   background-color: var(--primary-white);
@@ -33,8 +33,8 @@ export const DetailsWrapper = styled.div`
 
   button {
     margin: 15px;
-    width: 100px;
-    padding: 8px;
+    width: 150px;
+    padding: 15px;
     cursor: pointer;
     background-color: var(--primary-white);
     color: var(--primary);
@@ -45,6 +45,23 @@ export const DetailsWrapper = styled.div`
   button:hover {
     background-color: var(--secondary);
     color: var(--primary);
+  }
+
+  button.editBtnMobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 650px) {
+    button.editBtnMobile {
+      display: block;
+      width: 200px;
+      padding: 20px;
+      margin: 20px 0 0 0;
+    }
+
+    button.editBtnNormal {
+      display: none;
+    }
   }
 `;
 
@@ -102,5 +119,9 @@ export const EditWrapper = styled.div`
   h2 {
     margin: 0;
     padding: 0;
+  }
+
+  @media screen and (max-width: 850px) {
+    margin-bottom: 20px;
   }
 `;

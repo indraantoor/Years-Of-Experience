@@ -39,9 +39,9 @@ export const Container = styled.div`
 
   #description {
     padding: 0 3rem 1rem 0;
-    text-align: justify;
     line-height: 1.5;
     font-weight: 300;
+    letter-spacing: 0.4px;
   }
 
   @media screen and (max-width: 800px) {

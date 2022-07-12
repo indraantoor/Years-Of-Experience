@@ -103,7 +103,6 @@ export const EditWorkExperiences = () => {
       }
     }
 
-    // console.log(details);
     dispatch(workExperiencesSlice.actions.update(details));
     dispatch(updateWorkExperienceToApi(details));
     navigate(`/profile/${params.profileId}`);
@@ -135,6 +134,7 @@ export const EditWorkExperiences = () => {
                   value={String(updatedDetails?.jobTitle)}
                   name="jobTitle"
                   onChange={handleChange}
+                  required
                 />
               </label>
               <div id="dates">
@@ -183,11 +183,8 @@ export const EditWorkExperiences = () => {
                   value={String(updatedDetails?.companyName)}
                   name="companyName"
                   onChange={handleChange}
+                  required
                 />
-              </label>
-              <label htmlFor="companyLogo">
-                Logo
-                <input type="file" id="companyLogo" />
               </label>
               <label htmlFor="jobDescription">
                 Job Description
@@ -197,6 +194,7 @@ export const EditWorkExperiences = () => {
                   placeholder="Job Description"
                   name="jobDescription"
                   onChange={handleChange}
+                  required
                 />
               </label>
               <div>

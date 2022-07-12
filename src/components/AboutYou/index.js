@@ -49,7 +49,7 @@ export const AboutYou = () => {
         <EditWrapper>
           <h2>About You</h2>
           <Link to={location.pathname + "basic"}>
-            <button>Edit</button>
+            <button class="editBtnNormal">Edit</button>
           </Link>
         </EditWrapper>
         <DetailsContainer>
@@ -77,6 +77,7 @@ export const AboutYou = () => {
             </React.Fragment>
           )}
         </DetailsContainer>
+        <button class="editBtnMobile">Edit</button>
       </DetailsWrapper>
 
       <DetailsWrapper>
