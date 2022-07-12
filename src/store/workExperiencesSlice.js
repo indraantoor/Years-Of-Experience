@@ -1,5 +1,5 @@
 import { createSlice, nanoid, createAsyncThunk } from "@reduxjs/toolkit";
-import { collection, getDocs } from "@firebase/firestore";
+import { collection, getDocs, doc, updateDoc } from "@firebase/firestore";
 import { db } from "../firebase-config";
 
 const createWorkExperience = ({
@@ -72,6 +72,16 @@ export const fetchWorkExperiencesFromApi = createAsyncThunk(
   }
 );
 
+export const updateWorkExperienceToApi = createAsyncThunk(
+  "workExperiences/updateWorkExperience",
+  async (details) => {
+    const { userId, id, ...updatedDetails } = details;
+    const workExperienceRef = doc(db, "users", userId, "workExperiences", id);
+    const response = await updateDoc(workExperienceRef, updatedDetails);
+    return response;
+  }
+);
+
 export const workExperiencesSlice = createSlice({
   name: "workExperiences",
   initialState,
@@ -99,16 +109,31 @@ export const workExperiencesSlice = createSlice({
       state.error = true;
       state.redirect = false;
     },
+    [updateWorkExperienceToApi.pending]: (state, action) => {
+      state.loading = true;
+      state.error = false;
+      state.redirect = false;
+    },
+    [updateWorkExperienceToApi.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.error = false;
+      state.redirect = true;
+    },
+    [updateWorkExperienceToApi.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = true;
+      state.redirect = false;
+    },
   },
 });
 
 function updateWorkExperience(state, action) {
-  const selectedItemIndex = state.findIndex(
+  const selectedItemIndex = state.data.findIndex(
     (experience) => experience.id == action.payload.id
   );
 
   for (let property in action.payload) {
-    state[selectedItemIndex][property] = action.payload[property];
+    state.data[selectedItemIndex][property] = action.payload[property];
   }
 }
 
