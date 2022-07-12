@@ -5,15 +5,22 @@ import {
   userDetailsSlice,
   updateUserDetailsToApi,
 } from "../../store/userDetailsSlice";
+import { useParams, Navigate, useNavigate } from "react-router-dom";
 
 export const EditBasicDetails = () => {
   const [updatedDetails, setUpdatedDetails] = useState({});
   const userId = useSelector((state) => state.userDetails.id);
+  const redirect = useSelector((state) => state.userDetails.redirect);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const params = useParams();
+
+  if (redirect == true) {
+    return <Navigate to={`/profile/${params.profileId}`} />;
+  }
 
   const handleChange = (event) => {
-    console.log(String(event.target.value).trim());
     setUpdatedDetails((prev) => {
       return {
         ...prev,
@@ -30,6 +37,7 @@ export const EditBasicDetails = () => {
       userId: userId,
     };
     dispatch(updateUserDetailsToApi(details));
+    navigate(`/profile/${params.profileId}`);
   };
 
   return (

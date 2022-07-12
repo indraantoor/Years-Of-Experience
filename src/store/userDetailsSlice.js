@@ -11,6 +11,7 @@ const initialState = {
   // age: 20,
   loading: true,
   error: true,
+  redirect: false,
 };
 
 export const fetchUserDetailsFromApi = createAsyncThunk(
@@ -42,27 +43,33 @@ export const userDetailsSlice = createSlice({
     [fetchUserDetailsFromApi.pending]: (state, action) => {
       state.loading = true;
       state.error = false;
+      state.redirect = false;
     },
     [fetchUserDetailsFromApi.fulfilled]: (state, action) => {
       updateDetails(state, action);
       state.loading = false;
       state.error = false;
+      state.redirect = false;
     },
     [fetchUserDetailsFromApi.rejected]: (state, action) => {
       state.loading = false;
       state.error = true;
+      state.redirect = false;
     },
     [updateUserDetailsToApi.pending]: (state, action) => {
       state.loading = true;
       state.error = false;
+      state.redirect = false;
     },
     [updateUserDetailsToApi.fulfilled]: (state, action) => {
       state.loading = false;
       state.error = false;
+      state.redirect = true;
     },
     [updateUserDetailsToApi.rejected]: (state, action) => {
       state.loading = false;
       state.error = true;
+      state.redirect = false;
     },
   },
 });

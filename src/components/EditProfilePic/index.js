@@ -8,9 +8,12 @@ import {
   updateUserDetailsToApi,
   fetchUserDetailsFromApi,
 } from "../../store/userDetailsSlice";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const EditProfilePic = () => {
   const [file, setFile] = useState(null);
+  const navigate = useNavigate();
+  const params = useParams();
 
   useEffect(() => {
     const userId = "V4QsOhuPZXQHXJ2Dw8QI";
@@ -67,6 +70,7 @@ export const EditProfilePic = () => {
           };
           dispatch(updateUserDetailsToApi(details));
           console.log("Download URL", updatedDetails);
+          navigate(`/profile/${params.profileId}`);
         });
       }
     );
