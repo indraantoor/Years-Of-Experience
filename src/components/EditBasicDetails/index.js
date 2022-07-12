@@ -6,6 +6,7 @@ import {
   updateUserDetailsToApi,
 } from "../../store/userDetailsSlice";
 import { useParams, Navigate, useNavigate } from "react-router-dom";
+import { removeEmptyValues } from "../../utils";
 
 export const EditBasicDetails = () => {
   const [updatedDetails, setUpdatedDetails] = useState({});
@@ -31,6 +32,7 @@ export const EditBasicDetails = () => {
 
   const handleClick = (event) => {
     event.preventDefault();
+    removeEmptyValues(updatedDetails, setUpdatedDetails);
     dispatch(userDetailsSlice.actions.update(updatedDetails));
     const details = {
       ...updatedDetails,
