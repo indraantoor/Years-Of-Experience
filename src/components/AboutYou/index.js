@@ -77,7 +77,9 @@ export const AboutYou = () => {
             </React.Fragment>
           )}
         </DetailsContainer>
-        <button class="editBtnMobile">Edit</button>
+        <Link to={location.pathname + "basic"}>
+          <button class="editBtnMobile">Edit</button>
+        </Link>
       </DetailsWrapper>
 
       <DetailsWrapper>

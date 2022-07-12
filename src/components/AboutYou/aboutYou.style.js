@@ -51,6 +51,10 @@ export const DetailsWrapper = styled.div`
     display: none;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   @media screen and (max-width: 650px) {
     button.editBtnMobile {
       display: block;
