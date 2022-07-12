@@ -30,7 +30,7 @@ export const WorkExperience = ({
         </div>
         <div id="company">{company}</div>
         <div className="description-container">
-          Job Description: <div id="description">{description}</div>
+          Job Description: <p id="description">{description}</p>
         </div>
       </div>
     </Container>

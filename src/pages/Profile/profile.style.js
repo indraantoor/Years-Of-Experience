@@ -20,9 +20,9 @@ export const Container = styled.div`
 
 export const BasicDetailsContainer = styled.div`
   background-color: var(--primary);
-  width: 45rem;
+  width: 60%;
   margin: 2%;
-  max-width: 750px;
+  max-width: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,6 +51,10 @@ export const BasicDetailsContainer = styled.div`
     color: var(--secondary);
     cursor: pointer;
   }
+
+  @media screen and (max-width: 800px) {
+    width: 100%;
+  }
 `;
 
 export const ProfilePictureContainer = styled.div`
@@ -70,10 +74,15 @@ export const WorkExperiencesContainer = styled.div`
   padding: 2rem;
   margin-bottom: 30px;
   border-radius: 8px;
-  width: 38rem;
+  width: 70%;
+  max-width: 90%;
   background-color: var(--primary-white);
   box-shadow: 0 0 8px #ebeded;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+
+  @media screen and (max-width: 800px) {
+    width: 80%;
+  }
 `;
