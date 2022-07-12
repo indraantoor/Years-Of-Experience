@@ -14,19 +14,23 @@ export const Navbar = () => {
           <Link to="/">Homepage</Link>
         </li>
         <li>
-          <Link to="/">About Us</Link>
-        </li>
-        <li>
-          <Link to="/">Contact</Link>
-        </li>
-        <li>
           <Link to="/profile/indraantoor">Profile</Link>
         </li>
         <li>
-          <button>Sign In</button>
+          <Link to="/profile/indraantoor/edit/">Edit Profile</Link>
         </li>
         <li>
-          <button className="outline-button">Register</button>
+          <Link to="#">Contact</Link>
+        </li>
+        <li>
+          <Link to="#">
+            <button>Sign In</button>
+          </Link>
+        </li>
+        <li>
+          <Link to="#">
+            <button className="outline-button">Register</button>
+          </Link>
         </li>
       </ul>
     </NavbarContainer>
