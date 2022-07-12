@@ -30,6 +30,13 @@ export const AboutYou = () => {
   const isUserLoading = useSelector((state) => state.userDetails.loading);
   const isUserError = useSelector((state) => state.userDetails.error);
 
+  const isWorkExperiencesLoading = useSelector(
+    (state) => state.workExperiences.loading
+  );
+  const isWorkExperiencesError = useSelector(
+    (state) => state.workExperiences.error
+  );
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -74,7 +81,12 @@ export const AboutYou = () => {
 
       <DetailsWrapper>
         <h2>Work Experiences</h2>
-        {isValidExperiencesCollection &&
+        {isWorkExperiencesLoading ? (
+          <h2>Loading...</h2>
+        ) : isWorkExperiencesError ? (
+          <h2>Error</h2>
+        ) : (
+          isValidExperiencesCollection &&
           workExperiences.map((workExperience, i) => (
             <div key={i}>
               <WorkExperience
@@ -92,7 +104,8 @@ export const AboutYou = () => {
                 <button>Edit</button>
               </Link>
             </div>
-          ))}
+          ))
+        )}
       </DetailsWrapper>
       <button className="cancelBtn" onClick={() => navigate(-1)}>
         Cancel

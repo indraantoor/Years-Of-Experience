@@ -29,8 +29,16 @@ export const Profile = () => {
 
   const userData = useSelector((state) => state.userDetails);
   const workExperiences = useSelector((state) => state.workExperiences.data);
+
   const isUserLoading = useSelector((state) => state.userDetails.loading);
   const isUserError = useSelector((state) => state.userDetails.error);
+
+  const isWorkExperiencesLoading = useSelector(
+    (state) => state.workExperiences.loading
+  );
+  const isWorkExperiencesError = useSelector(
+    (state) => state.workExperiences.error
+  );
 
   const location = useLocation();
 
@@ -62,7 +70,12 @@ export const Profile = () => {
       </BasicDetailsContainer>
       <WorkExperiencesContainer>
         <h3 style={{ fontSize: "1.3rem" }}>Work Experiences</h3>
-        {isValidExperiencesCollection &&
+        {isWorkExperiencesLoading ? (
+          <h2>Loading...</h2>
+        ) : isWorkExperiencesError ? (
+          <h2>Error</h2>
+        ) : (
+          isValidExperiencesCollection &&
           workExperiences.map((workExperience, i) => (
             <WorkExperience
               key={i}
@@ -74,7 +87,8 @@ export const Profile = () => {
               companyLogoUrl={workExperience.companyLogo}
               description={workExperience.jobDescription}
             />
-          ))}
+          ))
+        )}
       </WorkExperiencesContainer>
       <Link to={location.pathname + "/edit/"}>
         <button className="editProfileBtn">Edit Profile</button>

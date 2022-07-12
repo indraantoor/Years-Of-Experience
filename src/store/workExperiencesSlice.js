@@ -23,6 +23,9 @@ const createWorkExperience = ({
 
 const initialState = {
   data: [],
+  loading: true,
+  error: true,
+  redirect: false,
 };
 
 // const initialState = [
@@ -80,8 +83,21 @@ export const workExperiencesSlice = createSlice({
     delete: deleteWorkExperience,
   },
   extraReducers: {
+    [fetchWorkExperiencesFromApi.pending]: (state, action) => {
+      state.loading = true;
+      state.error = false;
+      state.redirect = false;
+    },
     [fetchWorkExperiencesFromApi.fulfilled]: (state, action) => {
       state.data = action.payload;
+      state.loading = false;
+      state.error = false;
+      state.redirect = false;
+    },
+    [fetchWorkExperiencesFromApi.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = true;
+      state.redirect = false;
     },
   },
 });
