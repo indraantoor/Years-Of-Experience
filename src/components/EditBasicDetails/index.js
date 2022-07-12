@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FormContainer } from "./editBasicDetails.style";
+import { FormContainer, Form } from "./editBasicDetails.style";
 import { useDispatch, useSelector } from "react-redux";
 import {
   userDetailsSlice,
@@ -45,7 +45,7 @@ export const EditBasicDetails = () => {
   return (
     <React.Fragment>
       <FormContainer>
-        <form onSubmit={handleClick}>
+        <Form onSubmit={handleClick}>
           <label htmlFor="name">
             Name
             <input
@@ -74,7 +74,7 @@ export const EditBasicDetails = () => {
             <input
               type="number"
               id="age"
-              min="0"
+              min="1"
               max="100"
               placeholder="Age"
               name="age"
@@ -84,7 +84,7 @@ export const EditBasicDetails = () => {
           <div className="submitBtnContainer">
             <button type="submit">Update</button>
           </div>
-        </form>
+        </Form>
       </FormContainer>
     </React.Fragment>
   );

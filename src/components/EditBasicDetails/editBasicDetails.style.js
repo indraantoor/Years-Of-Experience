@@ -9,7 +9,9 @@ export const FormContainer = styled.div`
   background-color: var(--primary-white);
   box-shadow: 0 0 8px #ebeded;
   border-radius: 8px;
+`;
 
+export const Form = styled.form`
   button {
     width: 7rem;
     padding: 10px;
@@ -18,6 +20,10 @@ export const FormContainer = styled.div`
     color: var(--primary);
     border: none;
     border-radius: 5px;
+  }
+
+  button:disabled {
+    background-color: red;
   }
 
   label {
