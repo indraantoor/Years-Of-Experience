@@ -11,6 +11,7 @@ import { removeEmptyValues, trimAllValues } from "../../utils";
 import { fetchUserDetailsFromApi } from "../../store/userDetailsSlice";
 import { fetchWorkExperiencesFromApi } from "../../store/workExperiencesSlice";
 import { EditCompanyPic } from "../EditCompanyPic";
+import { isValidDuration } from "../../utils";
 
 export const EditWorkExperiences = () => {
   const [updatedDetails, setUpdatedDetails] = useState({});
@@ -78,12 +79,6 @@ export const EditWorkExperiences = () => {
     }
   };
 
-  const isValidDuration = (startDate, endDate) => {
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-    return start < end ? true : false;
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const filteredDetails = removeEmptyValues(updatedDetails);
@@ -120,7 +115,7 @@ export const EditWorkExperiences = () => {
     <Container>
       <FormContainer>
         {loading ? (
-          <h2>Loading...</h2>
+          <h2 data-testid="loading">Loading...</h2>
         ) : (
           <React.Fragment>
             <EditCompanyPic />

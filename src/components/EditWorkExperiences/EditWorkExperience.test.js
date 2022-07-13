@@ -3,7 +3,7 @@
  */
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { AboutYou } from ".";
+import { EditWorkExperiences } from ".";
 import "@testing-library/jest-dom";
 import { StaticRouter } from "react-router-dom/server";
 import { waitForElementToBeRemoved } from "@testing-library/react";
@@ -29,30 +29,15 @@ jest.mock("../../firebase-config.js", () => ({
   getStorage: "nknk",
 }));
 
-test("basic user details should be initially loading", async () => {
+test("should be initially loading", async () => {
   render(
     <StaticRouter>
       <Provider store={store}>
-        <AboutYou />
+        <EditWorkExperiences />
       </Provider>
     </StaticRouter>
   );
 
   expect(screen.getByTestId("loading")).toBeDefined();
   await waitForElementToBeRemoved(() => screen.queryByTestId("loading"));
-});
-
-test("work experiences should be initially loading", async () => {
-  render(
-    <StaticRouter>
-      <Provider store={store}>
-        <AboutYou />
-      </Provider>
-    </StaticRouter>
-  );
-
-  expect(screen.getByTestId("experienceLoading")).toBeDefined();
-  await waitForElementToBeRemoved(() =>
-    screen.queryByTestId("experienceLoading")
-  );
 });

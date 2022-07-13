@@ -3,7 +3,7 @@
  */
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { AboutYou } from ".";
+import { Profile } from ".";
 import "@testing-library/jest-dom";
 import { StaticRouter } from "react-router-dom/server";
 import { waitForElementToBeRemoved } from "@testing-library/react";
@@ -33,7 +33,7 @@ test("basic user details should be initially loading", async () => {
   render(
     <StaticRouter>
       <Provider store={store}>
-        <AboutYou />
+        <Profile />
       </Provider>
     </StaticRouter>
   );
@@ -46,7 +46,7 @@ test("work experiences should be initially loading", async () => {
   render(
     <StaticRouter>
       <Provider store={store}>
-        <AboutYou />
+        <Profile />
       </Provider>
     </StaticRouter>
   );

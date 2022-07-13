@@ -49,7 +49,7 @@ export const Profile = () => {
     <Container>
       <BasicDetailsContainer>
         {isUserLoading ? (
-          <h2>Loading...</h2>
+          <h2 data-testid="loading">Loading...</h2>
         ) : isUserError ? (
           <h2>Error</h2>
         ) : (
@@ -71,7 +71,7 @@ export const Profile = () => {
       <WorkExperiencesContainer>
         <h3 style={{ fontSize: "1.3rem" }}>Work Experiences</h3>
         {isWorkExperiencesLoading ? (
-          <h2>Loading...</h2>
+          <h2 data-testid="experienceLoading">Loading...</h2>
         ) : isWorkExperiencesError ? (
           <h2>Error</h2>
         ) : (
