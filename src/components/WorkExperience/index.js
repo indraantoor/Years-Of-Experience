@@ -1,15 +1,18 @@
 import { Container, CompanyLogoContainer } from "./workExperience.style";
 import moment from "moment";
+import React from "react";
 
-export const WorkExperience = ({
-  title,
-  startDate,
-  endDate,
-  isCurrentlyWorking,
-  company,
-  companyLogoUrl,
-  description,
-}) => {
+export const WorkExperience = (props) => {
+  const {
+    title,
+    startDate,
+    endDate,
+    isCurrentlyWorking,
+    company,
+    companyLogoUrl,
+    description,
+  } = props;
+
   return (
     <Container>
       <CompanyLogoContainer>
@@ -21,9 +24,12 @@ export const WorkExperience = ({
           Start Date: {moment(new Date(startDate)).format("MMM YYYY")} - End
           Date:
           <span
-            className={isCurrentlyWorking === "true" ? "isWorking" : "finished"}
+            className={
+              String(isCurrentlyWorking) === "true" ? "isWorking" : "finished"
+            }
+            data-testid="endDateText"
           >
-            {isCurrentlyWorking === "true"
+            {String(isCurrentlyWorking) === "true"
               ? " Present"
               : `${" " + moment(new Date(endDate)).format("MMM YYYY")}`}
           </span>
