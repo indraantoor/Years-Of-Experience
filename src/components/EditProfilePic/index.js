@@ -12,8 +12,11 @@ import { useNavigate, useParams } from "react-router-dom";
 
 export const EditProfilePic = () => {
   const [file, setFile] = useState(null);
+
   const navigate = useNavigate();
   const params = useParams();
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const userId = "V4QsOhuPZXQHXJ2Dw8QI";
@@ -23,8 +26,6 @@ export const EditProfilePic = () => {
   const user = useSelector((state) => state.userDetails);
   const userId = useSelector((state) => state.userDetails.id);
 
-  const dispatch = useDispatch();
-
   const handleImageChange = (event) => {
     if (event.target.files[0]) {
       setFile(event.target.files[0]);
@@ -33,47 +34,8 @@ export const EditProfilePic = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const fileName = new Date().getTime() + file.name;
-    const storageRef = ref(storage, fileName);
-    const uploadTask = uploadBytesResumable(storageRef, file);
-
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        // Observe state change events such as progress, pause, and resume
-        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log("Upload is " + progress + "% done");
-        switch (snapshot.state) {
-          case "paused":
-            console.log("Upload is paused");
-            break;
-          case "running":
-            console.log("Upload is running");
-            break;
-          default:
-        }
-      },
-      (error) => {
-        // Handle unsuccessful uploads
-      },
-      () => {
-        // Handle successful uploads on complete
-        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          const updatedDetails = { profilePic: downloadURL };
-          dispatch(userDetailsSlice.actions.update(updatedDetails));
-          const details = {
-            ...updatedDetails,
-            userId: userId,
-          };
-          dispatch(updateUserDetailsToApi(details));
-          console.log("Download URL", updatedDetails);
-          navigate(`/profile/${params.profileId}`);
-        });
-      }
-    );
+    const { profileId } = params;
+    uploadPic(file, dispatch, userId, profileId, navigate);
   };
 
   return (
@@ -91,3 +53,50 @@ export const EditProfilePic = () => {
     </Container>
   );
 };
+
+/*
+    Helper Functions
+*/
+
+function uploadPic(file, dispatch, userId, profileId, redirectFn) {
+  const fileName = new Date().getTime() + file.name;
+  const storageRef = ref(storage, fileName);
+  const uploadTask = uploadBytesResumable(storageRef, file);
+
+  uploadTask.on(
+    "state_changed",
+    (snapshot) => {
+      // Observe state change events such as progress, pause, and resume
+      // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log("Upload is " + progress + "% done");
+      switch (snapshot.state) {
+        case "paused":
+          console.log("Upload is paused");
+          break;
+        case "running":
+          console.log("Upload is running");
+          break;
+        default:
+      }
+    },
+    (error) => {
+      // Handle unsuccessful uploads
+    },
+    () => {
+      // Handle successful uploads on complete
+      // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        const updatedDetails = { profilePic: downloadURL };
+        dispatch(userDetailsSlice.actions.update(updatedDetails));
+        const details = {
+          ...updatedDetails,
+          userId: userId,
+        };
+        dispatch(updateUserDetailsToApi(details));
+        console.log("Download URL", updatedDetails);
+        redirectFn(`/profile/${profileId}`);
+      });
+    }
+  );
+}
