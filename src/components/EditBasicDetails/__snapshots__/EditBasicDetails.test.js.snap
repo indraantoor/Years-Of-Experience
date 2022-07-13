@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="sc-bczRLJ gpsELF"
+>
+  <form
+    className="sc-gsnTZi iCcdGT"
+    onSubmit={[Function]}
+  >
+    <label
+      htmlFor="name"
+    >
+      Name
+      <input
+        id="name"
+        name="name"
+        onChange={[Function]}
+        placeholder="Name"
+        type="text"
+      />
+    </label>
+    <label
+      htmlFor="username"
+    >
+      Username
+      <input
+        id="username"
+        name="username"
+        onChange={[Function]}
+        placeholder="Username"
+        type="text"
+      />
+    </label>
+    <label
+      htmlFor="age"
+    >
+      Age
+      <input
+        id="age"
+        max="100"
+        min="1"
+        name="age"
+        onChange={[Function]}
+        placeholder="Age"
+        type="number"
+      />
+    </label>
+    <div
+      className="submitBtnContainer"
+    >
+      <button
+        type="submit"
+      >
+        Update
+      </button>
+    </div>
+  </form>
+</div>
+`;

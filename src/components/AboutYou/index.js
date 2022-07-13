@@ -45,11 +45,11 @@ export const AboutYou = () => {
 
   return (
     <Container>
-      <DetailsWrapper>
+      <DetailsWrapper data-testid="aboutYouSection">
         <EditWrapper>
           <h2>About You</h2>
           <Link to={location.pathname + "basic"}>
-            <button class="editBtnNormal">Edit</button>
+            <button className="editBtnNormal">Edit</button>
           </Link>
         </EditWrapper>
         <DetailsContainer>
@@ -78,7 +78,7 @@ export const AboutYou = () => {
           )}
         </DetailsContainer>
         <Link to={location.pathname + "basic"}>
-          <button class="editBtnMobile">Edit</button>
+          <button className="editBtnMobile">Edit</button>
         </Link>
       </DetailsWrapper>
 

@@ -88,7 +88,7 @@ export const EditCompanyPic = () => {
     <Container>
       <form onSubmit={handleSubmit}>
         <div className="image-container">
-          <img src={workExperience.companyLogo} alt="profile avatar" />
+          <img src={workExperience?.companyLogo} alt="profile avatar" />
         </div>
         <label htmlFor="profileimg">
           Company Logo
