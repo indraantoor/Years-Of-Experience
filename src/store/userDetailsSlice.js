@@ -10,7 +10,7 @@ const initialState = {
   //   "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   // age: 20,
   loading: true,
-  error: true,
+  error: false,
   redirect: false,
 };
 

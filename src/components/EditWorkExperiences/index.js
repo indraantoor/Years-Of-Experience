@@ -150,6 +150,7 @@ export const EditWorkExperiences = () => {
                     type="date"
                     id="enddate"
                     name="endDate"
+                    data-testid="endDate"
                     max={maxDate}
                     value={String(formatDate(updatedDetails?.endDate))}
                     onChange={handleChange}
@@ -164,6 +165,7 @@ export const EditWorkExperiences = () => {
                   id="currentlyworking"
                   name="isCurrentlyWorking"
                   checked={isChecked ? true : false}
+                  data-testid="isCurrentlyWorking"
                   value="true"
                   onChange={handleCheckbox}
                 />
