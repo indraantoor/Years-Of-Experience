@@ -199,18 +199,6 @@ export const EditWorkExperiences = () => {
               </div>
             </form>
             <div>
-              <button
-                id="removebtn"
-                onClick={(event) => {
-                  event.preventDefault();
-                  dispatch(
-                    workExperiencesSlice.actions.delete(workExperienceId)
-                  );
-                  navigate("/profile/" + profileId);
-                }}
-              >
-                Remove
-              </button>
               <button id="cancel" onClick={() => navigate(-1)}>
                 Cancel
               </button>
