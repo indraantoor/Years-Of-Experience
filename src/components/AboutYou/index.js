@@ -54,13 +54,13 @@ export const AboutYou = () => {
         </EditWrapper>
         <DetailsContainer>
           {isUserLoading ? (
-            <h2>Loading...</h2>
+            <h2 data-testid="loading">Loading...</h2>
           ) : isUserError ? (
             <h2>Error</h2>
           ) : (
             <React.Fragment>
               <ProfilePictureContainer>
-                <img src={userData.profilePic} alt="user" />
+                <img src={userData?.profilePic} alt="user" />
               </ProfilePictureContainer>
               <Wrapper>
                 <div>
@@ -85,7 +85,7 @@ export const AboutYou = () => {
       <DetailsWrapper>
         <h2>Work Experiences</h2>
         {isWorkExperiencesLoading ? (
-          <h2>Loading...</h2>
+          <h2 data-testid="experienceLoading">Loading...</h2>
         ) : isWorkExperiencesError ? (
           <h2>Error</h2>
         ) : (
