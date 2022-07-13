@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FormContainer, Form } from "./editBasicDetails.style";
+import { FormContainer, FormStyled } from "./editBasicDetails.style";
 import { useDispatch, useSelector } from "react-redux";
 import {
   userDetailsSlice,
@@ -10,10 +10,12 @@ import { removeEmptyValues } from "../../utils";
 
 export const EditBasicDetails = () => {
   const [updatedDetails, setUpdatedDetails] = useState({});
+
   const userId = useSelector((state) => state.userDetails.id);
   const redirect = useSelector((state) => state.userDetails.redirect);
 
   const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const params = useParams();
 
@@ -22,12 +24,7 @@ export const EditBasicDetails = () => {
   }
 
   const handleChange = (event) => {
-    setUpdatedDetails((prev) => {
-      return {
-        ...prev,
-        [event.target.name]: String(event.target.value).trim(),
-      };
-    });
+    updateValues(event, setUpdatedDetails);
   };
 
   const handleClick = (event) => {
@@ -45,7 +42,7 @@ export const EditBasicDetails = () => {
   return (
     <React.Fragment>
       <FormContainer>
-        <Form onSubmit={handleClick}>
+        <FormStyled onSubmit={handleClick}>
           <label htmlFor="name">
             Name
             <input
@@ -84,8 +81,21 @@ export const EditBasicDetails = () => {
           <div className="submitBtnContainer">
             <button type="submit">Update</button>
           </div>
-        </Form>
+        </FormStyled>
       </FormContainer>
     </React.Fragment>
   );
 };
+
+/*
+    Helper Functions
+*/
+
+function updateValues(event, setFn) {
+  setFn((prev) => {
+    return {
+      ...prev,
+      [event.target.name]: String(event.target.value).trim(),
+    };
+  });
+}

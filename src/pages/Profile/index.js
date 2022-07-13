@@ -7,8 +7,7 @@ import {
   WorkExperiencesContainer,
 } from "./profile.style";
 import { Link, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { fetchUserDetailsFromApi } from "../../store/userDetailsSlice";
 import { fetchWorkExperiencesFromApi } from "../../store/workExperiencesSlice";
 // function compareExperiences(firstExperience, secondExperience) {

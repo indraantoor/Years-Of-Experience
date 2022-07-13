@@ -11,7 +11,7 @@ export const FormContainer = styled.div`
   border-radius: 8px;
 `;
 
-export const Form = styled.form`
+export const FormStyled = styled.form`
   button {
     width: 7rem;
     padding: 10px;

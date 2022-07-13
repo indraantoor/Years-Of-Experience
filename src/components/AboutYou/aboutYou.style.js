@@ -106,8 +106,6 @@ export const ProfilePictureContainer = styled.div`
   height: 120px;
   border-radius: 8px;
   overflow: hidden;
-  // border: 3px solid var(--secondary);
-  // box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   img {
     width: 100%;
     cursor: pointer;
