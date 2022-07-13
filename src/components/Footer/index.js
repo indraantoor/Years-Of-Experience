@@ -19,7 +19,9 @@ export const Footer = () => {
           </li>
         </ul>
         <p>
-          <small>&copy; 2022 Indraan S Toor, All rights reserved.</small>
+          <small data-testid="copyright">
+            &copy; 2022 Indraan S Toor, All rights reserved.
+          </small>
         </p>
       </FooterContainer>
     </React.Fragment>
