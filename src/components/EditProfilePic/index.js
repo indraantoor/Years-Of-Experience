@@ -80,7 +80,7 @@ export const EditProfilePic = () => {
     <Container>
       <form onSubmit={handleSubmit}>
         <div className="image-container">
-          <img src={user.profilePic} alt="profile avatar" />
+          <img src={user?.profilePic} alt="profile avatar" />
         </div>
         <label htmlFor="profileimg">
           Profile Picture
