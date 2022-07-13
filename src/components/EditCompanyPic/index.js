@@ -4,8 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { storage } from "../../firebase-config";
 import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage";
 import { useParams } from "react-router-dom";
-import { workExperiencesSlice } from "../../store/workExperiencesSlice";
-import { updateWorkExperienceToApi } from "../../store/workExperiencesSlice";
+import {
+  workExperiencesSlice,
+  updateWorkExperienceToApi,
+} from "../../store/workExperiencesSlice";
 
 export const EditCompanyPic = () => {
   const [file, setFile] = useState(null);

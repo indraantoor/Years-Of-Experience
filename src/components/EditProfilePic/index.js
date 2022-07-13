@@ -3,10 +3,10 @@ import { Container } from "./editProfilePic.style";
 import { useSelector, useDispatch } from "react-redux";
 import { storage } from "../../firebase-config";
 import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage";
-import { userDetailsSlice } from "../../store/userDetailsSlice";
 import {
   updateUserDetailsToApi,
   fetchUserDetailsFromApi,
+  userDetailsSlice,
 } from "../../store/userDetailsSlice";
 import { useNavigate, useParams } from "react-router-dom";
 
