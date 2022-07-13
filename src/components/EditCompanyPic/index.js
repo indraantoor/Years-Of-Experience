@@ -3,9 +3,7 @@ import { Container } from "./editCompanyPic.style";
 import { useSelector, useDispatch } from "react-redux";
 import { storage } from "../../firebase-config";
 import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage";
-import { userDetailsSlice } from "../../store/userDetailsSlice";
-import { updateUserDetailsToApi } from "../../store/userDetailsSlice";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { workExperiencesSlice } from "../../store/workExperiencesSlice";
 import { updateWorkExperienceToApi } from "../../store/workExperiencesSlice";
 
@@ -14,10 +12,6 @@ export const EditCompanyPic = () => {
   const [isError, setIsError] = useState(false);
   const params = useParams();
 
-  // useEffect(() => {
-  //   const userId = "V4QsOhuPZXQHXJ2Dw8QI";
-  //   dispatch(fetchUserDetailsFromApi(userId));
-  // }, []);
   const workExperience = useSelector((state) =>
     state.workExperiences.data.find(
       (experience) => experience.id == params.workExperienceId

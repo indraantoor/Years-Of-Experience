@@ -4,31 +4,24 @@ import { useNavigate, useParams, Navigate } from "react-router-dom";
 import {
   updateWorkExperienceToApi,
   workExperiencesSlice,
+  fetchWorkExperiencesFromApi,
 } from "../../store/workExperiencesSlice";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
-import { removeEmptyValues, trimAllValues } from "../../utils";
+import { removeEmptyValues, trimAllValues, isValidDuration } from "../../utils";
 import { fetchUserDetailsFromApi } from "../../store/userDetailsSlice";
-import { fetchWorkExperiencesFromApi } from "../../store/workExperiencesSlice";
 import { EditCompanyPic } from "../EditCompanyPic";
-import { isValidDuration } from "../../utils";
+import { getCurrentDateFormatted } from "../../helpers";
 
 export const EditWorkExperiences = () => {
   const [updatedDetails, setUpdatedDetails] = useState({});
   const [maxDate, setMaxDate] = useState("");
   const [isChecked, setIsChecked] = useState(false);
-  const userId = useSelector((state) => state.userDetails.id);
-  const redirect = useSelector((state) => state.workExperiences.redirect);
-  const loading = useSelector((state) => state.workExperiences.loading);
 
-  useEffect(() => {
-    const userId = "V4QsOhuPZXQHXJ2Dw8QI";
-    dispatch(fetchUserDetailsFromApi(userId));
-    dispatch(fetchWorkExperiencesFromApi(userId));
-  }, []);
+  const navigate = useNavigate();
 
   const params = useParams();
-  const { workExperienceId, profileId } = params;
+  const { workExperienceId } = params;
 
   const dispatch = useDispatch();
 
@@ -37,6 +30,12 @@ export const EditWorkExperiences = () => {
       (experience) => experience.id == workExperienceId
     )
   );
+
+  useEffect(() => {
+    const userId = "V4QsOhuPZXQHXJ2Dw8QI";
+    dispatch(fetchUserDetailsFromApi(userId));
+    dispatch(fetchWorkExperiencesFromApi(userId));
+  }, []);
 
   useEffect(() => {
     if (Boolean(workExperience?.isCurrentlyWorking)) {
@@ -49,62 +48,35 @@ export const EditWorkExperiences = () => {
   }, [workExperience]);
 
   useEffect(() => {
-    const date = new Date();
-    setMaxDate(moment(date).format("YYYY-MM-DD"));
+    setMaxDate(getCurrentDateFormatted());
   }, []);
 
-  const navigate = useNavigate();
+  const userId = useSelector((state) => state.userDetails.id);
+  const redirect = useSelector((state) => state.workExperiences.redirect);
+  const loading = useSelector((state) => state.workExperiences.loading);
 
   const handleChange = (event) => {
-    setUpdatedDetails((prev) => {
-      return {
-        ...prev,
-        [event.target.name]: event.target.value,
-      };
-    });
+    updateValues(event, setUpdatedDetails);
   };
 
   const handleCheckbox = (event) => {
     const check = !isChecked;
     setIsChecked(!isChecked);
-    if (check) {
-      setUpdatedDetails((prev) => {
-        const { endDate, ...withoutEndDate } = prev;
-        return { ...withoutEndDate, isCurrentlyWorking: true };
-      });
-    } else {
-      setUpdatedDetails((prev) => {
-        return { ...prev, isCurrentlyWorking: false };
-      });
-    }
+    checkboxChange(check, setUpdatedDetails);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const filteredDetails = removeEmptyValues(updatedDetails);
-    const cleanedUpDetails = trimAllValues(filteredDetails);
-    const details = {
-      ...cleanedUpDetails,
-      userId: userId,
-      id: workExperienceId,
-    };
+    const details = prepareWithId(updatedDetails, userId, workExperienceId);
 
     if (isChecked == false) {
       const { startDate, endDate } = updatedDetails;
-      if (isValidDuration(startDate, endDate) == false) {
-        delete details["endDate"];
-        alert("Enter A Valid End Date");
-        return;
-      }
+      validateExperienceDuration(startDate, endDate, details);
     }
 
     dispatch(workExperiencesSlice.actions.update(details));
     dispatch(updateWorkExperienceToApi(details));
     navigate(`/profile/${params.profileId}`);
-  };
-
-  const formatDate = (date) => {
-    return moment(new Date(date)).format("YYYY-MM-DD");
   };
 
   if (redirect == true) {
@@ -209,3 +181,52 @@ export const EditWorkExperiences = () => {
     </Container>
   );
 };
+
+/*
+    Helper Functions
+*/
+
+function prepareWithId(data, userId, workExperienceId) {
+  const filteredDetails = removeEmptyValues(data);
+  const cleanedUpDetails = trimAllValues(filteredDetails);
+  const updatedData = {
+    ...cleanedUpDetails,
+    userId: userId,
+    id: workExperienceId,
+  };
+  return updatedData;
+}
+
+function validateExperienceDuration(startDate, endDate, data) {
+  if (isValidDuration(startDate, endDate) == false) {
+    delete data["endDate"];
+    alert("Enter A Valid End Date");
+    return;
+  }
+}
+
+function formatDate(date) {
+  return moment(new Date(date)).format("YYYY-MM-DD");
+}
+
+function updateValues(event, setFn) {
+  setFn((prev) => {
+    return {
+      ...prev,
+      [event.target.name]: event.target.value,
+    };
+  });
+}
+
+function checkboxChange(checked, setFn) {
+  if (checked) {
+    setFn((prev) => {
+      const { endDate, ...withoutEndDate } = prev;
+      return { ...withoutEndDate, isCurrentlyWorking: true };
+    });
+  } else {
+    setFn((prev) => {
+      return { ...prev, isCurrentlyWorking: false };
+    });
+  }
+}

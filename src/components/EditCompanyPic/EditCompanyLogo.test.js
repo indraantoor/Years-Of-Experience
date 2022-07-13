@@ -49,23 +49,3 @@ test("renders correctly", () => {
 
   expect(tree).toMatchSnapshot();
 });
-
-// test("username has no spaces", () => {
-//   render(
-//     <StaticRouter>
-//       <Provider store={store}>
-//         <EditBasicDetails />
-//       </Provider>
-//     </StaticRouter>
-//   );
-
-//   function hasInputValue(e, inputValue) {
-//     return screen.getByDisplayValue(inputValue) === e;
-//   }
-
-//   const inputValue = "user name";
-//   const usernameInput = screen.getByLabelText("Username");
-//   fireEvent.change(usernameInput, { target: { value: inputValue } });
-
-//   expect(hasInputValue(usernameInput, "username")).toBe(true);
-// });
