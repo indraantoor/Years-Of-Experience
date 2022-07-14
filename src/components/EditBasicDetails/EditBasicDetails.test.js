@@ -34,30 +34,27 @@ jest.mock("../../store/requests.js", () => ({
   updateUserDetailsRequest: jest.fn(),
 }));
 
-test("renders correctly", () => {
-  const { store } = renderWithContext(<EditBasicDetails />);
+describe("edit basic details form", () => {
+  it("renders successfully", () => {
+    const { store } = renderWithContext(<EditBasicDetails />);
+    const tree = create(
+      <StaticRouter>
+        <Provider store={store}>
+          <EditBasicDetails />
+        </Provider>
+      </StaticRouter>
+    ).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
-  const tree = create(
-    <StaticRouter>
-      <Provider store={store}>
-        <EditBasicDetails />
-      </Provider>
-    </StaticRouter>
-  ).toJSON();
-
-  expect(tree).toMatchSnapshot();
-});
-
-test("username has no spaces", () => {
-  renderWithContext(<EditBasicDetails />);
-
-  function hasInputValue(e, inputValue) {
-    return screen.getByDisplayValue(inputValue) === e;
-  }
-
-  const inputValue = "user name";
-  const usernameInput = screen.getByLabelText("Username");
-  fireEvent.change(usernameInput, { target: { value: inputValue } });
-
-  expect(hasInputValue(usernameInput, "username")).toBe(true);
+  test("username has no spaces", () => {
+    renderWithContext(<EditBasicDetails />);
+    function hasInputValue(e, inputValue) {
+      return screen.getByDisplayValue(inputValue) === e;
+    }
+    const inputValue = "user name";
+    const usernameInput = screen.getByLabelText("Username");
+    fireEvent.change(usernameInput, { target: { value: inputValue } });
+    expect(hasInputValue(usernameInput, "username")).toBe(true);
+  });
 });

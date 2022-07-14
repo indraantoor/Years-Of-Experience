@@ -1,6 +1,4 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { doc, getDoc, updateDoc } from "@firebase/firestore";
-import { db } from "../../firebase-config";
 import { fetchUserDetailsRequest, updateUserDetailsRequest } from "../requests";
 
 export const fetchUserDetailsFromApi = createAsyncThunk(

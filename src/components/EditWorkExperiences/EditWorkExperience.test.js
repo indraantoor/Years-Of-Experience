@@ -2,7 +2,7 @@
  *  @jest-environment jsdom
  */
 import React from "react";
-import { fireEvent, getByTestId, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { EditWorkExperiences } from ".";
 import "@testing-library/jest-dom";
 import { StaticRouter } from "react-router-dom/server";
@@ -11,22 +11,22 @@ import { Provider } from "react-redux";
 import { store } from "../../store/index";
 
 jest.mock("@firebase/firestore", () => ({
-  doc: "hell",
-  getDoc: "jk",
-  updatedoc: "jkjkj",
-  initializeApp: (m) => {},
-  getFirestore: "dkendk",
-  enableIndexedDbPersistence: "nknkn",
+  doc: jest.fn(),
+  getDoc: jest.fn(),
+  updatedoc: jest.fn(),
+  initializeApp: jest.fn(),
+  getFirestore: jest.fn(),
+  enableIndexedDbPersistence: jest.fn(),
 }));
 
 jest.mock("@firebase/storage", () => ({
-  ref: "",
-  uploadBytesResumable: "",
-  getDownloadURL: "",
+  ref: jest.fn(),
+  uploadBytesResumable: jest.fn(),
+  getDownloadURL: jest.fn(),
 }));
 
 jest.mock("../../firebase-config.js", () => ({
-  getStorage: "nknk",
+  getStorage: jest.fn(),
 }));
 
 test("should be initially loading", async () => {

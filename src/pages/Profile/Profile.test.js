@@ -2,57 +2,45 @@
  *  @jest-environment jsdom
  */
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { Profile } from ".";
 import "@testing-library/jest-dom";
-import { StaticRouter } from "react-router-dom/server";
 import { waitForElementToBeRemoved } from "@testing-library/react";
-import { Provider } from "react-redux";
-import { store } from "../../store/index";
+import { renderWithContext } from "../../test-utils";
 
 jest.mock("@firebase/firestore", () => ({
-  doc: "hell",
-  getDoc: "jk",
-  updatedoc: "jkjkj",
-  initializeApp: (m) => {},
-  getFirestore: "dkendk",
-  enableIndexedDbPersistence: "nknkn",
+  doc: jest.fn(),
+  getDoc: jest.fn(),
+  updatedoc: jest.fn(),
+  initializeApp: jest.fn(),
+  getFirestore: jest.fn(),
+  enableIndexedDbPersistence: jest.fn(),
 }));
 
 jest.mock("@firebase/storage", () => ({
-  ref: "",
-  uploadBytesResumable: "",
-  getDownloadURL: "",
+  ref: jest.fn(),
+  uploadBytesResumable: jest.fn(),
+  getDownloadURL: jest.fn(),
 }));
 
 jest.mock("../../firebase-config.js", () => ({
   getStorage: "nknk",
 }));
 
-test("basic user details should be initially loading", async () => {
-  render(
-    <StaticRouter>
-      <Provider store={store}>
-        <Profile />
-      </Provider>
-    </StaticRouter>
-  );
+describe("profile page loading states", () => {
+  test("basic user details should be initially loading", async () => {
+    renderWithContext(<Profile />);
 
-  expect(screen.getByTestId("loading")).toBeDefined();
-  await waitForElementToBeRemoved(() => screen.queryByTestId("loading"));
-});
+    expect(screen.getByTestId("loading")).toBeDefined();
+    await waitForElementToBeRemoved(() => screen.queryByTestId("loading"));
+  });
 
-test("work experiences should be initially loading", async () => {
-  render(
-    <StaticRouter>
-      <Provider store={store}>
-        <Profile />
-      </Provider>
-    </StaticRouter>
-  );
+  test("work experiences should be initially loading", async () => {
+    renderWithContext(<Profile />);
 
-  expect(screen.getByTestId("experienceLoading")).toBeDefined();
-  await waitForElementToBeRemoved(() =>
-    screen.queryByTestId("experienceLoading")
-  );
+    expect(screen.getByTestId("experienceLoading")).toBeDefined();
+    await waitForElementToBeRemoved(() =>
+      screen.queryByTestId("experienceLoading")
+    );
+  });
 });

@@ -4,7 +4,7 @@
 import React from "react";
 import { EditProfilePic } from ".";
 import "@testing-library/jest-dom";
-import { screen, fireEvent, findByRole, waitFor } from "@testing-library/react";
+import { screen, fireEvent, waitFor } from "@testing-library/react";
 import { uploadPic } from "./helpers";
 import { renderWithContext } from "../../test-utils";
 import { fetchUserDetailsRequest } from "../../store/requests";
