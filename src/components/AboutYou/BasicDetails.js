@@ -7,7 +7,7 @@ export const BasicDetails = ({ userData }) => {
       <ProfilePictureContainer>
         <img src={userData?.profilePic} alt="user" />
       </ProfilePictureContainer>
-      <Wrapper>
+      <Wrapper data-testid="basicUserDetails">
         <div>
           <span>Name</span> {userData.name}
         </div>

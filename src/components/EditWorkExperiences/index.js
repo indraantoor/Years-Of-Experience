@@ -3,9 +3,9 @@ import { FormContainer, Container } from "./editWorkExperiences.style";
 import { useNavigate, useParams, Navigate } from "react-router-dom";
 import {
   updateWorkExperienceToApi,
-  workExperiencesSlice,
   fetchWorkExperiencesFromApi,
-} from "../../store/workExperiencesSlice";
+} from "../../store/helpers/workExperiencesSliceHelpers";
+import { workExperiencesSlice } from "../../store/workExperiencesSlice";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { removeEmptyValues, trimAllValues, isValidDuration } from "../../utils";

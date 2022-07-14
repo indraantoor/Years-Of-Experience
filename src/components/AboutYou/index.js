@@ -8,7 +8,7 @@ import {
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserDetailsFromApi } from "../../store/userDetailsSlice";
-import { fetchWorkExperiencesFromApi } from "../../store/workExperiencesSlice";
+import { fetchWorkExperiencesFromApi } from "../../store/helpers/workExperiencesSliceHelpers";
 import { BasicDetails } from "./BasicDetails";
 import { WorkExperiencesCards } from "./WorkExperiencesCards";
 
@@ -69,13 +69,15 @@ export const AboutYou = () => {
           <h2 data-testid="experienceLoading">Loading...</h2>
         ) : isWorkExperiencesError ? (
           <h2>Error</h2>
-        ) : (
-          isValidExperiencesCollection && (
+        ) : isValidExperiencesCollection ? (
+          <div data-testid="workExperiences">
             <WorkExperiencesCards
               workExperiences={workExperiences}
               location={location}
             />
-          )
+          </div>
+        ) : (
+          <h2 data-testid="emptyExperiencesData">There are no experiences</h2>
         )}
       </DetailsWrapper>
       <button className="cancelBtn" onClick={() => navigate(-1)}>

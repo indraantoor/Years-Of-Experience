@@ -9,7 +9,7 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserDetailsFromApi } from "../../store/userDetailsSlice";
-import { fetchWorkExperiencesFromApi } from "../../store/workExperiencesSlice";
+import { fetchWorkExperiencesFromApi } from "../../store/helpers/workExperiencesSliceHelpers";
 // function compareExperiences(firstExperience, secondExperience) {
 //   if (firstExperience.isCurrentlyWorking === "true") {
 //     return -1;

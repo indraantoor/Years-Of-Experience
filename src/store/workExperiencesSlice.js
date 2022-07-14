@@ -1,30 +1,17 @@
-import { createSlice, nanoid, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { collection, getDocs, doc, updateDoc } from "@firebase/firestore";
 import { db } from "../firebase-config";
-
-const createWorkExperience = ({
-  jobTitle,
-  startDate,
-  endDate = null,
-  companyName,
-  companyLogo,
-  jobDescription,
-  isCurrentlyWorking,
-}) => ({
-  id: nanoid(),
-  jobTitle,
-  startDate,
-  endDate,
-  companyName,
-  companyLogo,
-  jobDescription,
-  isCurrentlyWorking,
-});
+import {
+  fetchWorkExperiencesFromApi,
+  updateWorkExperienceToApi,
+  updateWorkExperience,
+  deleteWorkExperience,
+} from "./helpers/workExperiencesSliceHelpers";
 
 const initialState = {
   data: [],
   loading: true,
-  error: true,
+  error: false,
   redirect: false,
 };
 
@@ -53,44 +40,43 @@ const initialState = {
 //   },
 // ];
 
-export const fetchWorkExperiencesFromApi = createAsyncThunk(
-  "workExperiences/fetchWorkExperiences",
-  async (userId) => {
-    const workExperiencesRef = collection(
-      db,
-      "users",
-      userId,
-      "workExperiences"
-    );
-    const workExperiences = await getDocs(workExperiencesRef);
-    const response = workExperiences.docs.map((doc) => ({
-      ...doc.data(),
-      id: doc.id,
-    }));
-    return response;
-  }
-);
+// export const fetchWorkExperiencesFromApi = createAsyncThunk(
+//   "workExperiences/fetchWorkExperiences",
+//   async (userId) => {
+//     const workExperiencesRef = collection(
+//       db,
+//       "users",
+//       userId,
+//       "workExperiences"
+//     );
+//     const workExperiences = await getDocs(workExperiencesRef);
+//     const response = workExperiences.docs.map((doc) => ({
+//       ...doc.data(),
+//       id: doc.id,
+//     }));
+//     return response;
+//   }
+// );
 
-export const updateWorkExperienceToApi = createAsyncThunk(
-  "workExperiences/updateWorkExperience",
-  async (details) => {
-    const { userId, id, ...updatedDetails } = details;
-    const workExperienceRef = doc(db, "users", userId, "workExperiences", id);
-    const response = await updateDoc(workExperienceRef, updatedDetails);
-    return response;
-  }
-);
+// export const updateWorkExperienceToApi = createAsyncThunk(
+//   "workExperiences/updateWorkExperience",
+//   async (details) => {
+//     const { userId, id, ...updatedDetails } = details;
+//     const workExperienceRef = doc(db, "users", userId, "workExperiences", id);
+//     const response = await updateDoc(workExperienceRef, updatedDetails);
+//     return response;
+//   }
+// );
+
+const reducers = {
+  update: updateWorkExperience,
+  delete: deleteWorkExperience,
+};
 
 export const workExperiencesSlice = createSlice({
   name: "workExperiences",
   initialState,
-  reducers: {
-    add: (state, action) => {
-      state.push(createWorkExperience(action.payload));
-    },
-    update: updateWorkExperience,
-    delete: deleteWorkExperience,
-  },
+  reducers: reducers,
   extraReducers: {
     [fetchWorkExperiencesFromApi.pending]: (state, action) => {
       state.loading = true;
@@ -126,19 +112,21 @@ export const workExperiencesSlice = createSlice({
   },
 });
 
-function updateWorkExperience(state, action) {
-  const selectedItemIndex = state.data.findIndex(
-    (experience) => experience.id == action.payload.id
-  );
+export default workExperiencesSlice.reducer;
 
-  for (let property in action.payload) {
-    state.data[selectedItemIndex][property] = action.payload[property];
-  }
-}
+// function updateWorkExperience(state, action) {
+//   const selectedItemIndex = state.data.findIndex(
+//     (experience) => experience.id == action.payload.id
+//   );
 
-function deleteWorkExperience(state, action) {
-  state.splice(
-    state.findIndex((item) => item._id === action.payload),
-    1
-  );
-}
+//   for (let property in action.payload) {
+//     state.data[selectedItemIndex][property] = action.payload[property];
+//   }
+// }
+
+// function deleteWorkExperience(state, action) {
+//   state.splice(
+//     state.findIndex((item) => item._id === action.payload),
+//     1
+//   );
+// }
