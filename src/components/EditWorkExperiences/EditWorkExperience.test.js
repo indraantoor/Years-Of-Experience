@@ -19,28 +19,6 @@ jest.mock("@firebase/firestore", () => ({
   enableIndexedDbPersistence: "nknkn",
 }));
 
-// jest.mock("../../store/helpers/workExperiencesSliceHelpers", () => {
-//   return {
-//     async fetchWorkExperiencesFromApi(userId) {
-//       let response = [];
-//       return response;
-//     },
-//     async updateWorkExperienceToApi(detail) {
-//       return [];
-//     },
-//     updateWorkExperience() {
-//       return [];
-//     },
-//     deleteWorkExperience() {
-//       return [];
-//     },
-//   };
-// });
-
-// jest.mock("../../firebase-config.js", () => ({
-//   db: "hell",
-// }));
-
 jest.mock("@firebase/storage", () => ({
   ref: "",
   uploadBytesResumable: "",

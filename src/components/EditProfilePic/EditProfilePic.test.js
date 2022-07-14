@@ -2,11 +2,12 @@
  *  @jest-environment jsdom
  */
 import React from "react";
-import { EditCompanyPic } from ".";
+import { EditProfilePic } from ".";
 import "@testing-library/jest-dom";
-import { screen, fireEvent } from "@testing-library/react";
+import { screen, fireEvent, findByRole, waitFor } from "@testing-library/react";
 import { uploadPic } from "./helpers";
 import { renderWithContext } from "../../test-utils";
+import { fetchUserDetailsRequest } from "../../store/requests";
 
 jest.mock("@firebase/firestore", () => ({
   doc: jest.fn(),
@@ -31,10 +32,27 @@ jest.mock("./helpers.js", () => ({
   uploadPic: jest.fn(),
 }));
 
+jest.mock("../../store/requests", () => ({
+  fetchUserDetailsRequest: jest.fn(),
+}));
+
 describe("update company logo image", () => {
-  test("uploads an image successfully", () => {
+  test("uploads an image successfully", async () => {
     uploadPic.mockImplementation(() => {});
-    renderWithContext(<EditCompanyPic />);
+    fetchUserDetailsRequest.mockImplementation(() => {
+      return {
+        id: "1",
+        name: "Name",
+        username: "username",
+        profilePic: "",
+        age: 20,
+      };
+    });
+    renderWithContext(<EditProfilePic />);
+    const img = await screen.findByRole("img");
+    await waitFor(() => {
+      expect(img).toBeInTheDocument();
+    });
     const updateBtn = screen.getByTestId("updateBtn");
     fireEvent.click(updateBtn);
     expect(uploadPic).toBeCalled();
