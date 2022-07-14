@@ -8,7 +8,7 @@ import {
 } from "./profile.style";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchUserDetailsFromApi } from "../../store/userDetailsSlice";
+import { fetchUserDetailsFromApi } from "../../store/helpers/userDetailsSliceHelpers";
 import { fetchWorkExperiencesFromApi } from "../../store/helpers/workExperiencesSliceHelpers";
 // function compareExperiences(firstExperience, secondExperience) {
 //   if (firstExperience.isCurrentlyWorking === "true") {

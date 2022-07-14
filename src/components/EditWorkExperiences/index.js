@@ -9,7 +9,7 @@ import { workExperiencesSlice } from "../../store/workExperiencesSlice";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { removeEmptyValues, trimAllValues, isValidDuration } from "../../utils";
-import { fetchUserDetailsFromApi } from "../../store/userDetailsSlice";
+import { fetchUserDetailsFromApi } from "../../store/helpers/userDetailsSliceHelpers";
 import { EditCompanyPic } from "../EditCompanyPic";
 import { getCurrentDateFormatted } from "../../helpers";
 

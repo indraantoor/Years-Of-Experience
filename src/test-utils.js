@@ -27,20 +27,3 @@ export function renderWithContext(children, state) {
 
   return { store };
 }
-
-export function getStateWithItems(userDetails, workExperiences) {
-  const state = {
-    userDetails: {
-      loading: true,
-      error: false,
-      redirect: false,
-    },
-    workExperiences: {
-      data: [],
-      loading: true,
-      error: false,
-      redirect: false,
-    },
-  };
-  return state;
-}

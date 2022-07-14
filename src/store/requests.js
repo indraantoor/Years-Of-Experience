@@ -1,4 +1,10 @@
-import { collection, getDocs, doc, updateDoc, getDoc } from "@firebase/firestore";
+import {
+  collection,
+  getDocs,
+  doc,
+  updateDoc,
+  getDoc,
+} from "@firebase/firestore";
 import { db } from "../firebase-config";
 
 export const fetchExperiencesRequest = async (userId) => {
@@ -16,4 +22,10 @@ export const fetchUserDetailsRequest = async (userId) => {
   const user = await getDoc(userRef);
   const response = { ...user.data(), id: userId };
   return response;
+};
+
+export const updateUserDetailsRequest = async (details) => {
+  const { userId, ...updatedDetails } = details;
+  const userRef = doc(db, "users", userId);
+  await updateDoc(userRef, updatedDetails);
 };

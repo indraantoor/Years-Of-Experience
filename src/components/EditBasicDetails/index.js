@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { FormContainer, FormStyled } from "./editBasicDetails.style";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  userDetailsSlice,
-  updateUserDetailsToApi,
-} from "../../store/userDetailsSlice";
+import { userDetailsSlice } from "../../store/userDetailsSlice";
+import { updateUserDetailsToApi } from "../../store/helpers/userDetailsSliceHelpers";
 import { useParams, Navigate, useNavigate } from "react-router-dom";
 import { removeEmptyValues } from "../../utils";
 
@@ -16,8 +14,8 @@ export const EditBasicDetails = () => {
 
   const dispatch = useDispatch();
 
-  const navigate = useNavigate();
   const params = useParams();
+  const navigate = useNavigate();
 
   if (redirect == true) {
     return <Navigate to={`/profile/${params.profileId}`} />;
@@ -79,7 +77,9 @@ export const EditBasicDetails = () => {
             />
           </label>
           <div className="submitBtnContainer">
-            <button type="submit">Update</button>
+            <button type="submit" data-testid="submitBtn">
+              Update
+            </button>
           </div>
         </FormStyled>
       </FormContainer>

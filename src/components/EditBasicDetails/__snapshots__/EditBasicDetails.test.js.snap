@@ -50,6 +50,7 @@ exports[`renders correctly 1`] = `
       className="submitBtnContainer"
     >
       <button
+        data-testid="submitBtn"
         type="submit"
       >
         Update

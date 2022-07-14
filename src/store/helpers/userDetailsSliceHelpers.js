@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { doc, getDoc, updateDoc } from "@firebase/firestore";
 import { db } from "../../firebase-config";
-import { fetchUserDetailsRequest } from "../requests";
+import { fetchUserDetailsRequest, updateUserDetailsRequest } from "../requests";
 
 export const fetchUserDetailsFromApi = createAsyncThunk(
   "userDetails/fetchUserDetails",
@@ -13,14 +13,6 @@ export const fetchUserDetailsFromApi = createAsyncThunk(
 export const updateUserDetailsToApi = createAsyncThunk(
   "userDetails/updateUserDetails",
   async (details) => {
-    const { userId, ...updatedDetails } = details;
-    const userRef = doc(db, "users", userId);
-    await updateDoc(userRef, updatedDetails);
+    return updateUserDetailsRequest(details);
   }
 );
-
-function updateDetails(state, action) {
-  for (let property in action.payload) {
-    state[property] = action.payload[property];
-  }
-}

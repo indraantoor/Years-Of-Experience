@@ -7,7 +7,7 @@ import {
 } from "./aboutYou.style";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchUserDetailsFromApi } from "../../store/userDetailsSlice";
+import { fetchUserDetailsFromApi } from "../../store/helpers/userDetailsSliceHelpers";
 import { fetchWorkExperiencesFromApi } from "../../store/helpers/workExperiencesSliceHelpers";
 import { BasicDetails } from "./BasicDetails";
 import { WorkExperiencesCards } from "./WorkExperiencesCards";

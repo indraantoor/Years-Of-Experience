@@ -3,11 +3,9 @@ import { Container } from "./editProfilePic.style";
 import { useSelector, useDispatch } from "react-redux";
 import { storage } from "../../firebase-config";
 import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage";
-import {
-  updateUserDetailsToApi,
-  fetchUserDetailsFromApi,
-  userDetailsSlice,
-} from "../../store/userDetailsSlice";
+import { userDetailsSlice } from "../../store/userDetailsSlice";
+import { updateUserDetailsToApi } from "../../store/helpers/userDetailsSliceHelpers";
+import { fetchUserDetailsFromApi } from "../../store/helpers/userDetailsSliceHelpers";
 import { useNavigate, useParams } from "react-router-dom";
 
 export const EditProfilePic = () => {
