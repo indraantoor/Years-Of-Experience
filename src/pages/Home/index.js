@@ -10,7 +10,7 @@ export const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate("/profile/indraantoor/");
+    navigate("/profile/indraantoor");
   }, []);
 
   return <div></div>;
