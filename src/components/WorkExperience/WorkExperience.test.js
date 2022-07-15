@@ -20,7 +20,7 @@ jest.mock("@firebase/firestore", () => ({
 }));
 
 jest.mock("@firebase/storage", () => ({
-  ref: "",
+  ref: jest.fn(),
   uploadBytesResumable: jest.fn(),
   getDownloadURL: jest.fn(),
 }));
