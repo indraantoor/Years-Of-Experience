@@ -10,14 +10,14 @@ import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserDetailsFromApi } from "../../store/helpers/userDetailsSliceHelpers";
 import { fetchWorkExperiencesFromApi } from "../../store/helpers/workExperiencesSliceHelpers";
+import { currentUserId } from "../../app-config";
 
 export const Profile = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const userId = "V4QsOhuPZXQHXJ2Dw8QI";
-    dispatch(fetchUserDetailsFromApi(userId));
-    dispatch(fetchWorkExperiencesFromApi(userId));
+    dispatch(fetchUserDetailsFromApi(currentUserId));
+    dispatch(fetchWorkExperiencesFromApi(currentUserId));
   }, []);
 
   const userData = useSelector((state) => state.userDetails);

@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "./editProfilePic.style";
 import { useSelector, useDispatch } from "react-redux";
-import { storage } from "../../firebase-config";
-import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage";
-import { userDetailsSlice } from "../../store/userDetailsSlice";
-import { updateUserDetailsToApi } from "../../store/helpers/userDetailsSliceHelpers";
 import { fetchUserDetailsFromApi } from "../../store/helpers/userDetailsSliceHelpers";
 import { useNavigate, useParams } from "react-router-dom";
 import { uploadPic } from "./helpers";
+import { currentUserId } from "../../app-config";
 
 export const EditProfilePic = () => {
   const [file, setFile] = useState(null);
@@ -18,8 +15,7 @@ export const EditProfilePic = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const userId = "V4QsOhuPZXQHXJ2Dw8QI";
-    dispatch(fetchUserDetailsFromApi(userId));
+    dispatch(fetchUserDetailsFromApi(currentUserId));
   }, []);
 
   const user = useSelector((state) => state.userDetails);

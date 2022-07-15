@@ -12,6 +12,7 @@ import { removeEmptyValues, trimAllValues, isValidDuration } from "../../utils";
 import { fetchUserDetailsFromApi } from "../../store/helpers/userDetailsSliceHelpers";
 import { EditCompanyPic } from "../EditCompanyPic";
 import { getCurrentDateFormatted } from "../../helpers";
+import { currentUserId } from "../../app-config";
 
 export const EditWorkExperiences = () => {
   const [updatedDetails, setUpdatedDetails] = useState({});
@@ -32,9 +33,8 @@ export const EditWorkExperiences = () => {
   );
 
   useEffect(() => {
-    const userId = "V4QsOhuPZXQHXJ2Dw8QI";
-    dispatch(fetchUserDetailsFromApi(userId));
-    dispatch(fetchWorkExperiencesFromApi(userId));
+    dispatch(fetchUserDetailsFromApi(currentUserId));
+    dispatch(fetchWorkExperiencesFromApi(currentUserId));
   }, []);
 
   useEffect(() => {

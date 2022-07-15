@@ -11,6 +11,7 @@ import { fetchUserDetailsFromApi } from "../../store/helpers/userDetailsSliceHel
 import { fetchWorkExperiencesFromApi } from "../../store/helpers/workExperiencesSliceHelpers";
 import { BasicDetails } from "./BasicDetails";
 import { WorkExperiencesCards } from "./WorkExperiencesCards";
+import { currentUserId } from "../../app-config";
 
 export const AboutYou = () => {
   const dispatch = useDispatch();
@@ -19,9 +20,8 @@ export const AboutYou = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const userId = "V4QsOhuPZXQHXJ2Dw8QI";
-    dispatch(fetchUserDetailsFromApi(userId));
-    dispatch(fetchWorkExperiencesFromApi(userId));
+    dispatch(fetchUserDetailsFromApi(currentUserId));
+    dispatch(fetchWorkExperiencesFromApi(currentUserId));
   }, []);
 
   const userData = useSelector((state) => state.userDetails);

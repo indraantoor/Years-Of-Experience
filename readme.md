@@ -16,10 +16,6 @@
 
 3. In Firebase create a project
 
-```sh
-  npm install
-```
-
 4. In Firebase create a storage and set the rules to
 
 ```sh
