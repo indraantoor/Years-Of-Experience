@@ -34,4 +34,7 @@ export const EditBasicDetailsContainer = styled.div`
   justify-content: center;
   gap: 1rem;
   margin-top: 2%;
+  @media screen and (max-width: 870px) {
+    flex-direction: column;
+  }
 `;

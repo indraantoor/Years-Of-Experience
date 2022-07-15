@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`edit basic details form renders successfully 1`] = `
 <div
   className="sc-bczRLJ gpsELF"
 >

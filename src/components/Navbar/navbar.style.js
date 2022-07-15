@@ -76,4 +76,10 @@ export const NavbarContainer = styled.nav`
       margin-right: auto;
     }
   }
+
+  @media screen and (max-width: 570px) {
+    li > a {
+      display: none;
+    }
+  }
 `;

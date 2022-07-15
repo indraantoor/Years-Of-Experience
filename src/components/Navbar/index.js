@@ -8,11 +8,11 @@ export const Navbar = () => {
       <ul>
         <li>
           <h1>
-            <Link to="/">Years Of Experience</Link>
+            <Link to="/profile/indraantoor">Years Of Experience</Link>
           </h1>
         </li>
         <li>
-          <Link to="/">Homepage</Link>
+          <Link to="/profile/indraantoor">Homepage</Link>
         </li>
         <li>
           <Link to="/profile/indraantoor">Profile</Link>
