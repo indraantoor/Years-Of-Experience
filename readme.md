@@ -70,7 +70,10 @@ Initialy you have to set your own profile pic url
     profilePic | string | Enter your profile pic url as value
 ```
 
-8. In Firestore Database, in users collection start a collection with collection ID
+8. After Creating the document copy the "Document ID" of this newly created user document
+   and paste it in the "app-config.js", "currentUserId" variable.
+
+9. In Firestore Database, in users collection start a collection with collection ID
 
 This is going to contain all of the work experiences associated to the user.
 
@@ -78,7 +81,7 @@ This is going to contain all of the work experiences associated to the user.
     workExperiences
 ```
 
-9. In that as many documents as you want in the following format
+10. In that as many documents as you want in the following format
 
 Click on "Auto-ID" in Document ID
 Initialy you have to set your own company logo url
@@ -100,7 +103,7 @@ Initialy you have to set your own company logo url
     jobTitle | string | Enter the job title as value
 ```
 
-10. Go To your project settings and go to "Your App Section" then in SDK setup and configuration select "npm" then copy the "firebaseConfig" Object which will be in the following format
+11. Go To your project settings and go to "Your App Section" then in SDK setup and configuration select "npm" then copy the "firebaseConfig" Object which will be in the following format
 
 ```sh
 const firebaseConfig = {
