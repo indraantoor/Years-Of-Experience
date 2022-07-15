@@ -11,22 +11,22 @@ import { Provider } from "react-redux";
 import { store } from "../../store/index";
 
 jest.mock("@firebase/firestore", () => ({
-  doc: "hell",
-  getDoc: "jk",
-  updatedoc: "jkjkj",
-  initializeApp: (m) => {},
-  getFirestore: "dkendk",
-  enableIndexedDbPersistence: "nknkn",
+  doc: jest.fn(),
+  getDoc: jest.fn(),
+  updatedoc: jest.fn(),
+  initializeApp: jest.fn(),
+  getFirestore: jest.fn(),
+  enableIndexedDbPersistence: jest.fn(),
 }));
 
 jest.mock("@firebase/storage", () => ({
   ref: "",
-  uploadBytesResumable: "",
-  getDownloadURL: "",
+  uploadBytesResumable: jest.fn(),
+  getDownloadURL: jest.fn(),
 }));
 
 jest.mock("../../firebase-config.js", () => ({
-  getStorage: "nknk",
+  getStorage: jest.fn(),
 }));
 
 test("work experience renders with props without crashing", () => {
