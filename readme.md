@@ -4,9 +4,9 @@
 
 1. Clone the repo
 
-   ```sh
-   git clone https://github.com/indraantoor/Years-Of-Experience
-   ```
+```sh
+    git clone https://github.com/indraantoor/Years-Of-Experience
+```
 
 2. Navigate To The Years Of Experience Directory And Run
 
