@@ -55,6 +55,12 @@ export const BasicDetailsContainer = styled.div`
   @media screen and (max-width: 800px) {
     width: 100%;
   }
+
+  @media screen and (max-width: 490px) {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 `;
 
 export const ProfilePictureContainer = styled.div`
